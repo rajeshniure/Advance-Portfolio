@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, memo } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
@@ -15,7 +15,7 @@ interface TechIconCardExperienceProps {
   model: ModelProps;
 }
 
-const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = ({ model }) => {
+const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ model }) => {
   const scene = useGLTF(model.modelPath);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -32,17 +32,19 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = ({ model }
     }
   }, [scene, model.name]);
 
-  // Responsive scale
-  const scale = isMobile && model.scale
-    ? model.scale.map((v) => v * 0.7) as [number, number, number]
-    : model.scale;
+  // Responsive scale - memoized to prevent unnecessary recalculations
+  const scale = useMemo(() => {
+    return isMobile && model.scale
+      ? model.scale.map((v) => v * 0.7) as [number, number, number]
+      : model.scale;
+  }, [isMobile, model.scale]);
 
   return (
     <Box sx={{ width: "100%", height: { xs: "100px", sm: "100px", md: "100px", lg: "150px" } }}>
       <Canvas>
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[5, 5, 5]} intensity={1} />
-        <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={2} />
+        <ambientLight intensity={1} color={0xffffff} />
+        <directionalLight position={[5, 5, 5]} intensity={2.5} color={0xffffff} />
+        <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={3} color={0xffffff} />
         <Environment preset="city" />
 
         <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
@@ -55,6 +57,6 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = ({ model }
       </Canvas>
     </Box>
   );
-};
+});
 
 export default TechIconCardExperience;

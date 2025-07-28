@@ -9,13 +9,13 @@ import * as random from "maath/random/dist/maath-random.esm";
 const StarBackground: React.FC = () => {
   const ref = useRef<THREE.Points>(null);
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
+    random.inSphere(new Float32Array(2000), { radius: 1.2 })
   );
 
   useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
+      ref.current.rotation.x -= delta / 15;
+      ref.current.rotation.y -= delta / 20;
     }
   });
 
@@ -30,7 +30,7 @@ const StarBackground: React.FC = () => {
         <PointMaterial
           transparent
           color="white"
-          size={0.002}
+          size={0.003}
           sizeAttenuation
           depthWrite={false}
         />

@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { motion, useSpring, useTransform } from "framer-motion";
 import type { MouseEventHandler } from "react";
+import { useScrollAnimationScale } from '../hooks/useScrollAnimation';
 
 interface ItemType {
   id: number;
@@ -46,12 +47,13 @@ const sheenSize = 500;
 const cardRotation = 15;
 const cardScale = 1.07;
 
-function CertificateCard({ item }: { item: ItemType }) {
+function CertificateCard({ item, index }: { item: ItemType; index: number }) {
   const xPcnt = useSpring(0, { bounce: 0 });
   const yPcnt = useSpring(0, { bounce: 0 });
   const mouseX = useSpring(0, { bounce: 0 });
   const mouseY = useSpring(0, { bounce: 0 });
   const scale = useSpring(1, { bounce: 0 });
+  const cardAnimation = useScrollAnimationScale(index);
 
   const rotateX = useTransform(
     yPcnt,
@@ -102,6 +104,10 @@ function CertificateCard({ item }: { item: ItemType }) {
 
   return (
     <motion.div
+      ref={cardAnimation.ref}
+      initial={cardAnimation.initial}
+      animate={cardAnimation.animate}
+      transition={cardAnimation.transition}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -150,12 +156,12 @@ function CertificateCard({ item }: { item: ItemType }) {
 export default function CertificateSection() {
   return (
     <Box id="certifications" sx={{
-      minHeight: "100vh",
+      minHeight: "auto",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      py: 4,
+      pt: {xs:8,md:10},
     }}>
       <Box  sx={{ textAlign: "center", mb: 8 }}>
         <Typography variant="h4" color="text.secondary" fontWeight={700} gutterBottom>
@@ -175,9 +181,9 @@ export default function CertificateSection() {
         width: {xs:"90%",md:"70%"},
         
       }}>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <Grid size={{ xs: 6, md: 3 }} key={item.id}>
-            <CertificateCard item={item} />
+            <CertificateCard item={item} index={index} />
           </Grid>
         ))}
       </Grid>

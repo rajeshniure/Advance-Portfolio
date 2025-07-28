@@ -1,48 +1,71 @@
 import { useRef, useState } from "react";
+import { motion } from 'framer-motion';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import {
   Box,
   Typography,
   Button,
-
   Grid,
 } from "@mui/material";
+import {  useScrollAnimationLeft, useScrollAnimationRight } from '../hooks/useScrollAnimation';
 
 interface ItemType {
   id: number;
   title: string;
   img: string;
   desc: string;
+  url: string;
 }
 
 const items: ItemType[] = [
   {
     id: 1,
-    title: "Food Commerce",
-    img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    title: "Rock Bazaar",
+    img: "../src/assets/projects/Rockbazaar.png",
+    desc: " RockBazaar is a modern e-commerce web application built for fans of rock and pop music. It offers a curated collection of band-inspired clothing and merchandise with intuitive filtering by artist, genre, and category. The platform features a clean UI, responsive design, and secure checkout. Developed using  Django , RockBazaar demonstrates my skills in full-stack development, dynamic content management, and user-centric design.",
+    url: "https://github.com/rajeshniure/RockBazaar--Django",
   },
   {
     id: 2,
-    title: "Next.js Blog",
-    img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum ",
+    title: "Advance Dashboard",
+    img: "../src/assets/projects/AdvanceDashboard.png",
+    desc: "The Advanced Dashboard is a sleek, responsive admin interface designed to visualize data and manage content with ease. Built using React and Material UI, it features interactive cards, smooth animations, drag-and-drop functionality, and dynamic data rendering. This project highlights my ability to create visually appealing, highly functional UIs with a strong focus on user experience and component reusability.",
+    url: "https://github.com/rajeshniure/Advance-Dashboard",
   },
   {
     id: 3,
-    title: "Vanilla JS App",
-    img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit fakdfadsf  aiewifwo wowowow fhvnvwoov whvwowvovwnovw",
+    title: "Snap Note",
+    img: "../src/assets/projects/SnapNote.jpg",
+    desc: "Snap Note is a tweet-style web application built with Django, allowing users to share short notes alongside images. Authenticated users can post image-based updates with brief descriptions, creating a clean, scrollable feed. The project emphasizes simplicity, user interaction, and a dynamic image-posting experience.",
+    url: "https://github.com/rajeshniure/SnapNote-Django",
   },
   {
     id: 4,
-    title: "Music App",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+    title: "Food Commerce",
+    img: "../src/assets/projects/Foodcommerce.png",
+    desc: "A basic e-commerce web app for ordering delicious food items like cakes, muffins, and more. Built using ReactJS and styled with Tailwind CSS, it includes essential features like Add to Cart, Cart Quantity Increment, and Order Confirmation.",
+    url: "https://github.com/rajeshniure/FoodCommerce",
+  },
+  {
+    id: 5,
+    title: "Tip Splitter",
+    img: "../src/assets/projects/tipsplitter.png",
+    desc: "A responsive tip calculator built with React,TypeScript, and Material UI. Enter the bill, select or input a custom tip percentage, and split the total evenly among people. Clean UI, mobile-friendly, and easy to use.",
+    url: "https://github.com/rajeshniure/Tip-Splitter",
+  },
+    {
+    id: 6,
+    title: "Clash of Categories",
+    img: "../src/assets/projects/clashOfCategories.png",
+    desc: "Clash of Categories is a web-based platform designed to create, organize, and manage category-based challenge games. It allows admins to define custom categories, add rounds of challenges, and streamline gameplay for participants. Built with Django on the backend and a JavaScript-powered frontend, the system focuses on clean structure, usability, and efficient game flow management.",
+    url: "https://github.com/rajeshniure/Clash-of-Categories",
   },
 ];
 
-const Single: React.FC<{ item: ItemType }> = ({ item }) => {
+const Single: React.FC<{ item: ItemType; index: number }> = ({ item, index }) => {
   const ref = useRef<HTMLDivElement | null>(null);
+  const imageAnimation = useScrollAnimationRight(index * 2);
+  const contentAnimation = useScrollAnimationLeft(index * 2 + 1);
 
   return (
     <Box
@@ -69,48 +92,61 @@ const Single: React.FC<{ item: ItemType }> = ({ item }) => {
       >
         <Grid
           container
-          spacing={{ xs: 3, md: 8 }}
+          spacing={{ xs: 1, md: 8 }}
           alignItems="center"
           justifyContent="center"
         >
           <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Box
-              sx={{
-                width: '100%',
-                maxWidth: 620,
-                aspectRatio: '4/3',
-                mx: 'auto',
-                boxShadow: 2,
-                borderRadius: {xs:0,md:2},
-                overflow: 'hidden',
-                background: 'rgba(0,0,0,0.03)',
-              }}
+            <motion.div
+              ref={imageAnimation.ref}
+              initial={imageAnimation.initial}
+              animate={imageAnimation.animate}
+              transition={imageAnimation.transition}
             >
-              <img
-                src={item.img}
-                alt={item.title}
-                style={{
+              <Box
+                sx={{
                   width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
+                  maxWidth: 620,
+                  aspectRatio: '4/3',
+                  mx: 'auto',
+                  boxShadow: 2,
+                  borderRadius: {xs:0,md:2},
+                  overflow: 'hidden',
+                  background: 'rgba(0,0,0,0.03)',
                 }}
-              />
-            </Box>
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </Box>
+            </motion.div>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-            <Box
-              px={{xs:1,md:0}}
-              display="flex"
-              flexDirection="column"
-              gap={{ xs: 2, md: 4 }}
-              sx={{
-                alignItems: { xs: 'center', md: 'flex-start' },
-                textAlign: { xs: 'center', md: 'left' },
-                width: {xs:'100%',md:'94%'},
-                
-              }}
+            <motion.div
+              ref={contentAnimation.ref}
+              initial={contentAnimation.initial}
+              animate={contentAnimation.animate}
+              transition={contentAnimation.transition}
             >
+              <Box
+                px={{xs:1,md:0}}
+                display="flex"
+                flexDirection="column"
+                gap={{ xs: 1, md: 4 }}
+                sx={{
+                  alignItems: { xs: 'center', md: 'flex-start' },
+                  textAlign: { xs: 'center', md: 'left' },
+                  width: {xs:'100%',md:'94%'},
+                  
+                }}
+              >
               <Typography
                 variant="h3"
                 sx={{ fontWeight: 700, fontSize: { xs: '2rem', sm: '2.2rem', md: '2.8rem' } }}
@@ -121,11 +157,12 @@ const Single: React.FC<{ item: ItemType }> = ({ item }) => {
                 {item.desc}
               </Typography>
               <Button
+                href={item.url}
                 variant="contained"
                 sx={{
-                width: { xs: '35%', sm: 150 },
-                 p:{xs:0,md:1},
-                  borderRadius:{xs:0.4,md: 1},
+                  width: { xs: '40%', sm: 150 },
+                  p: { xs: 0.3, md: 1 },
+                  borderRadius: { xs: 0.4, md: 0.8 },
                   backgroundColor: 'secondary.main',
                   color: 'white',
                   alignSelf: { xs: 'center', md: 'flex-start' },
@@ -133,16 +170,23 @@ const Single: React.FC<{ item: ItemType }> = ({ item }) => {
                   fontSize: '1rem',
                   boxShadow: 2,
                   transition: 'background 0.2s, transform 0.2s',
-                  mb:{xs:1,md:0},
+                  mb: { xs: 1, md: 0 },
                   '&:hover': {
                     backgroundColor: 'secondary.dark',
                     transform: 'translateY(-2px) scale(1.04)',
                   },
+                  display: 'flex',
+                  alignItems: 'center',
+                 
                 }}
+                startIcon={
+                  <GitHubIcon />
+                }
               >
-                View
+                Source Code
               </Button>
             </Box>
+            </motion.div>
           </Grid>
         </Grid>
       </Box>
@@ -160,7 +204,7 @@ const Projects: React.FC = () => {
     <Box
       id="projects"
       sx={{
-        minHeight: '100vh',
+        minHeight:"auto",
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -173,9 +217,9 @@ const Projects: React.FC = () => {
         <Typography variant="h4" color="text.secondary" fontWeight={700}>
           Projects
         </Typography>
-        <Box sx={{ height: 8, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 150, margin: '0px auto 0 auto' }} />
+        <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 130, margin: '0px auto 0 auto' }} />
       </Box>
-      <Single item={item} />
+      <Single item={item} index={current} />
       <Box sx={{ display: 'flex', gap: 3, mt:4 }}>
         <Button variant="contained" sx={{ backgroundColor: 'primary.main' }} disabled={isFirst} onClick={() => setCurrent(current - 1)}>
           Prev
