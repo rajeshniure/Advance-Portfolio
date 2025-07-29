@@ -19,7 +19,7 @@ const createScrollHook = (animation: {
     initial: animation.initial,
     animate: isInView ? animation.animate : animation.initial,
     transition: { 
-      duration: 0.6, // Reduced duration for faster animations
+      duration: 0.6,
       delay: delay * 0.1
     }
   };

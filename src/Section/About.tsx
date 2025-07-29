@@ -8,6 +8,7 @@ import type{ SxProps, Theme } from "@mui/material/styles";
 const About: React.FC = () => {
   const containerAnimation = useScrollAnimationScale(0);
 
+
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 }
@@ -268,7 +269,6 @@ const About: React.FC = () => {
               itemsSx={{ display:'flex', flexDirection:'column', alignItems:'flex-start', gap:3, }}
             
             />
-
 
           </Box>
         </Box>

@@ -242,6 +242,9 @@ const CardContent: React.FC<{ item: ItemType }> = ({ item }) => {
             },
             
           }}
+          onClick={()=>{
+            window.open(item.img,"_blank");
+          }}
         >
           View Certificate
         </Button>

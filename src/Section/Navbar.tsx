@@ -21,6 +21,7 @@ import { Link } from "react-scroll";
 
 import {useColorMode} from "../ThemeContext";
 import { useActiveSection } from '../hooks/useActiveSection';
+import { handleDownload } from "../hooks/usedownload";
 
  
 
@@ -44,6 +45,8 @@ const NavBar: React.FC = () => {
   };
 
   const { toggleColorMode } = useColorMode();
+
+
 
   const HamburgerIcon = () => (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -177,10 +180,9 @@ const NavBar: React.FC = () => {
           variant="contained"
           size="small"
           startIcon={<DescriptionIcon />}
-          href=""
-          download
+          onClick={handleDownload}
           sx={{ fontSize: "0.9rem",fontWeight: 600, backgroundColor: "secondary.main" }}
-        >
+          >
           Get Resume
         </Button>
 

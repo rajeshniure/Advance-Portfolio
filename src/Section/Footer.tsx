@@ -4,13 +4,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
-interface FooterProps {
-  instagram: string;
-  linkedin: string;
-  github: string;
-}
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC = () => {
   return (
     <Box component="footer" sx={{ bgcolor: "background.paper", color: "text.secondary", pt: 6, pb: 3 }}>
       {/* Top Footer */}

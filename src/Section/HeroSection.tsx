@@ -6,6 +6,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import { useTheme } from '@mui/material/styles';
 import { useScrollAnimationLeft, useScrollAnimationRight } from '../hooks/useScrollAnimation';
 import profileImg from '../assets/images/profile2.png';
+import { handleDownload } from "../hooks/usedownload";
+import { Link } from "react-scroll";
 
 const socialLinks = [
   { icon: <GitHubIcon />, url: 'https://github.com/rajeshniure', label: 'GitHub' },
@@ -91,11 +93,13 @@ const HeroSection = () => {
                 Passionate Web developer with experience in building scalable web applications. Skilled in React, JavaScript, Django, Python, and database management, with a strong focus on performance, security, and clean code architecture.
               </Typography>
               <Stack direction="row" spacing={2} mb={2}>
+                <Link to="contact" smooth duration={500} style={{ textDecoration: "none", color: "inherit" }}>
                 <Button variant="contained" sx={{ color: 'white', fontWeight: 600, backgroundColor: 'secondary.main', fontSize: { xs: '0.8rem', md: '1.2rem' } }}>
                   Hire Me
                 </Button>
-                <Button variant="outlined" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: { xs: '0.8rem', md: '1.2rem' } }} >
-                  View Resume
+                </Link>
+                <Button variant="outlined" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: { xs: '0.8rem', md: '1.2rem' } }} onClick={handleDownload}>
+                  Download Resume
                 </Button>
               </Stack>
               <Stack direction="row" spacing={2}>

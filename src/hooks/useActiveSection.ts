@@ -10,7 +10,7 @@ export const useActiveSection = () => {
 
       sections.forEach((section) => {
         const sectionHeight = (section as HTMLElement).offsetHeight;
-        const sectionTop = (section as HTMLElement).offsetTop - 100; // Offset for navbar
+        const sectionTop = (section as HTMLElement).offsetTop - 100;
         const sectionId = section.getAttribute('id');
 
         if (sectionId && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
