@@ -249,7 +249,7 @@ const About: React.FC = () => {
                   style={{
                     width: '100%',
                     height: '100%',
-                    backgroundImage: 'url(/src/assets/images/About.png)',
+                    backgroundImage: 'url(/assets/images/About.png)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'

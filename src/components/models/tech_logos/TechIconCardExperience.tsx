@@ -32,7 +32,6 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ mo
     }
   }, [scene, model.name]);
 
-  // Responsive scale - memoized to prevent unnecessary recalculations
   const scale = useMemo(() => {
     return isMobile && model.scale
       ? model.scale.map((v) => v * 0.7) as [number, number, number]

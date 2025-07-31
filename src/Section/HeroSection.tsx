@@ -5,7 +5,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { useTheme } from '@mui/material/styles';
 import { useScrollAnimationLeft, useScrollAnimationRight } from '../hooks/useScrollAnimation';
-import profileImg from '../assets/images/profile2.png';
+// Updated to use direct path from public directory
+const profileImg = '/assets/images/profile2.png';
 import { handleDownload } from "../hooks/usedownload";
 import { Link } from "react-scroll";
 

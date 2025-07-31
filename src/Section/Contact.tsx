@@ -1,5 +1,4 @@
 import SendIcon from "@mui/icons-material/Send";
-import contact from '../assets/images/contact.webp';
 import {
   Box,
   Button,
@@ -14,6 +13,9 @@ import type { FormEvent } from "react";
 import { motion } from 'framer-motion';
 import { useToast } from "../hooks/use-toast";
 import {  useScrollAnimationLeft, useScrollAnimationRight } from '../hooks/useScrollAnimation';
+
+// Updated to use direct path from public directory
+const contact = '/assets/images/contact.webp';
 
 const Contact = () => {
   const { toast } = useToast();

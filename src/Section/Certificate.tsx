@@ -19,25 +19,25 @@ interface ItemType {
 const items: ItemType[] = [
   {
     id: 1,
-    img: "/src/assets/certificates/DSA Certificate.jpg",
+    img: "/assets/certificates/DSA Certificate.jpg",
     Name: "DSA",
     Issuer: "Programiz",
   },
   {
     id: 2,
-    img: "/src/assets/certificates/javascript.jpg",
+    img: "/assets/certificates/javascript.jpg",
     Name: "JavaScript",
     Issuer: "Programiz",
   },
   {
     id: 3,
-    img: "/src/assets/certificates/SQL.jpg",
+    img: "/assets/certificates/SQL.jpg",
     Name: "MySQL",
     Issuer: "Programiz",
   },
   {
     id: 4,
-    img: "/src/assets/certificates/hackaverse.jpg",
+    img: "/assets/certificates/hackaverse.jpg",
     Name: "Hackaverse",
     Issuer: "Prime Colllege",
   },
