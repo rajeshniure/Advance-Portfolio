@@ -67,9 +67,18 @@ class ModelErrorBoundary extends React.Component<
 
 const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ model }) => {
   return (
-    <Box sx={{ width: "100%", height: { xs: "100px", sm: "100px", md: "100px", lg: "150px" } }}>
+    <Box sx={{ 
+      width: "100%", 
+      height: { xs: "100px", lg: "150px" },
+      position: "relative"
+    }}>
       <ModelErrorBoundary modelName={model.name}>
-        <Canvas>
+        <Canvas
+          style={{
+            width: "100%",
+            height: "100%"
+          }}
+        >
           <ambientLight intensity={1} color={0xffffff} />
           <directionalLight position={[5, 5, 5]} intensity={2.5} color={0xffffff} />
           <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={3} color={0xffffff} />
@@ -79,7 +88,13 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ mo
             <Model model={model} />
           </Suspense>
 
-          <OrbitControls enableZoom={false} />
+          <OrbitControls 
+            enableZoom={false} 
+            enablePan={false}
+            autoRotate={false}
+            enableDamping={true}
+            dampingFactor={0.05}
+          />
         </Canvas>
       </ModelErrorBoundary>
     </Box>

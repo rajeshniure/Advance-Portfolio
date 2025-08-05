@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Box, Typography, Link, IconButton, Stack } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -8,14 +8,14 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 const Footer: React.FC = () => {
   return (
     <Box component="footer" sx={{ bgcolor: "background.paper", color: "text.secondary", pt: 6, pb: 3 }}>
-      {/* Top Footer */}
+
       <Box sx={{ textAlign: "center", mb: 2 }}>
         <Link href="#home" underline="none" color="inherit">
           <Typography variant="h6" fontWeight="bold">Rajesh Niure</Typography>
         </Link>
       </Box>
 
-      {/* Middle Footer - Menu */}
+
       <Box sx={{ textAlign: "center", mb: 2 }}>
         <Stack direction="row" spacing={3} justifyContent="center" flexWrap="wrap">
           {["home", "about", "skills", "projects", "contact"].map((section) => (
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
         </Stack>
       </Box>
 
-      {/* Social Icons */}
+
       <Box sx={{ textAlign: "center", mb: 2 }}>
         <Stack direction="row" spacing={2} justifyContent="center">
           <IconButton
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
         </Stack>
       </Box>
 
-      {/* Bottom Footer */}
+
       <Box sx={{ textAlign: "center", fontSize: "0.85rem", color: "gray" }}>
         <Typography variant="body2">
           © {new Date().getFullYear()}{" "}

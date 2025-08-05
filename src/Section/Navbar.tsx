@@ -1,4 +1,5 @@
-import React from "react";
+
+import { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -11,19 +12,14 @@ import {
   List,
   ListItemText,
   Drawer,
-
-
 } from "@mui/material";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import DescriptionIcon from "@mui/icons-material/Description";
 import { Link } from "react-scroll";
-
 import {useColorMode} from "../ThemeContext";
 import { useActiveSection } from '../hooks/useActiveSection';
 import { handleDownload } from "../hooks/usedownload";
-
- 
 
 const navItems = [
   { label: "Home", to: "home" },
@@ -35,7 +31,7 @@ const navItems = [
 ];
 
 const NavBar: React.FC = () => {
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const activeSection = useActiveSection();
@@ -46,8 +42,6 @@ const NavBar: React.FC = () => {
 
   const { toggleColorMode } = useColorMode();
 
-
-
   const HamburgerIcon = () => (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect y="6" width="28" height="2.5" rx="1.25" fill="currentColor"/>
@@ -55,6 +49,7 @@ const NavBar: React.FC = () => {
       <rect y="20" width="28" height="2.5" rx="1.25" fill="currentColor"/>
     </svg>
   );
+
   const CloseIcon = () => (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="7" y1="7" x2="21" y2="21" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
@@ -64,10 +59,10 @@ const NavBar: React.FC = () => {
 
   return (
 
-<AppBar position="fixed" elevation={0} sx={{backgroundColor: "background.default",  zIndex: 1000 }}>
-     <Toolbar sx={{ justifyContent: "space-between", mx:{ xs: 0, sm: 0,lg:"16rem"} }}>
-  <Typography variant="h5" sx={{ fontWeight: 600,fontSize:"1.8rem", color: "text.primary", cursor: "pointer" }}>
-    <Link to="home" smooth duration={500} style={{ textDecoration: "none", color: "inherit" }}>
+<AppBar position="fixed" elevation={0} sx={{ backgroundColor: "background.default", zIndex: 1000 }}>
+     <Toolbar sx={{ justifyContent: "space-between", mx: { xs: 0, lg: "16rem" } }}>
+  <Typography variant="h5" sx={{ fontWeight: 600, fontSize: "1.8rem", cursor: "pointer", color: "text.primary" }}>
+    <Link to="home" smooth duration={500} style={{ textDecoration: "none",}}>
       Rajesh
     </Link>
   </Typography>
@@ -104,8 +99,8 @@ const NavBar: React.FC = () => {
           }
         }}
       >
-        <Box sx={{ width: 260, p: 2, display: 'flex', flexDirection: 'column', height: '100%' }}>
-          {/* Close icon at top right */}
+        <Box sx={{ width: 260, p: 2, display: 'flex', flexDirection: 'column' }}>
+
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
             <IconButton onClick={toggleDrawer} sx={{ color: 'text.secondary' }}>
               <CloseIcon />
@@ -120,7 +115,6 @@ const NavBar: React.FC = () => {
                       py: 2.2,
                       px: 2,
                       borderRadius: 2,
-                      color: theme.palette.text.primary,
                       fontWeight: 500,
                       fontSize: '1.15rem',
                       letterSpacing: 0.5,

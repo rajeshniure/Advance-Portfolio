@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import { motion } from 'framer-motion';
+import { useState } from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import {
   Box,
@@ -7,7 +6,6 @@ import {
   Button,
   Grid,
 } from "@mui/material";
-import {  useScrollAnimationLeft, useScrollAnimationRight } from '../hooks/useScrollAnimation';
 
 interface ItemType {
   id: number;
@@ -62,31 +60,25 @@ const items: ItemType[] = [
   },
 ];
 
-const Single: React.FC<{ item: ItemType; index: number }> = ({ item, index }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const imageAnimation = useScrollAnimationRight(index * 2);
-  const contentAnimation = useScrollAnimationLeft(index * 2 + 1);
+const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
 
   return (
     <Box
-      ref={ref}
       sx={{
         width: {xs:'92%',md:'100%'},
         display: 'flex',
         justifyContent: 'center',
         border: { xs: "2px solid", md: "none" },
-        borderColor: { xs: "primary.main", md: "transparent" },
+        borderColor: { xs: "primary.main" },
         borderRadius: { xs: 2, md: 0 },
         filter: "brightness(1.08)",
         overflow: 'hidden',
-        zIndex: 2,
         boxShadow: {xs:"0 8px 32px 0 rgba(110, 87, 224, 0.25), 0 1.5px 8px 0 rgba(0,0,0,0.10)", md: "none" }, 
       }}
     >
       <Box
         sx={{
           width: '100%',
-          maxWidth: '100%',
           mx: { xs: 0, lg: '16rem' },
         }}
       >
@@ -97,96 +89,80 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item, index }) =>
           justifyContent="center"
         >
           <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <motion.div
-              ref={imageAnimation.ref}
-              initial={imageAnimation.initial}
-              animate={imageAnimation.animate}
-              transition={imageAnimation.transition}
+            <Box
+              sx={{
+                maxWidth: 620,
+                aspectRatio: '4/3',
+                mx: 'auto',
+                boxShadow: 2,
+                borderRadius: {xs:0,md:2},
+                overflow: 'hidden',
+                background: 'rgba(0,0,0,0.03)',
+              }}
             >
-              <Box
-                sx={{
+              <img
+                src={item.img}
+                alt={item.title}
+                style={{
                   width: '100%',
-                  maxWidth: 620,
-                  aspectRatio: '4/3',
-                  mx: 'auto',
-                  boxShadow: 2,
-                  borderRadius: {xs:0,md:2},
-                  overflow: 'hidden',
-                  background: 'rgba(0,0,0,0.03)',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
                 }}
-              >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                />
-              </Box>
-            </motion.div>
+              />
+            </Box>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-            <motion.div
-              ref={contentAnimation.ref}
-              initial={contentAnimation.initial}
-              animate={contentAnimation.animate}
-              transition={contentAnimation.transition}
+            <Box
+              sx={{
+                px: {xs:1,md:0},
+                display: "flex",
+                flexDirection: "column",
+                gap: { xs: 1, md: 4 },
+                alignItems: { xs: 'center', md: 'flex-start' },
+                textAlign: { xs: 'center', md: 'left' },
+                width: {xs:'100%',md:'94%'},
+              }}
             >
-              <Box
-                px={{xs:1,md:0}}
-                display="flex"
-                flexDirection="column"
-                gap={{ xs: 1, md: 4 }}
-                sx={{
-                  alignItems: { xs: 'center', md: 'flex-start' },
-                  textAlign: { xs: 'center', md: 'left' },
-                  width: {xs:'100%',md:'94%'},
-                  
-                }}
-              >
-              <Typography
-                variant="h3"
-                sx={{ fontWeight: 700, fontSize: { xs: '2rem', sm: '2.2rem', md: '2.8rem' } }}
-              >
-                {item.title}
-              </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'justify', fontSize: { xs: '0.8rem', md: '1.1rem' } }}>
-                {item.desc}
-              </Typography>
-              <Button
-                href={item.url}
-                variant="contained"
-                sx={{
-                  width: { xs: '40%', sm: 150 },
-                  p: { xs: 0.3, md: 1 },
-                  borderRadius: { xs: 0.4, md: 0.8 },
-                  backgroundColor: 'secondary.main',
-                  color: 'white',
-                  alignSelf: { xs: 'center', md: 'flex-start' },
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                  boxShadow: 2,
-                  transition: 'background 0.2s, transform 0.2s',
-                  mb: { xs: 1, md: 0 },
-                  '&:hover': {
-                    backgroundColor: 'secondary.dark',
-                    transform: 'translateY(-2px) scale(1.04)',
-                  },
-                  display: 'flex',
-                  alignItems: 'center',
-                 
-                }}
-                startIcon={
-                  <GitHubIcon />
-                }
-              >
-                Source Code
-              </Button>
-            </Box>
-            </motion.div>
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: 700, fontSize: { xs: '2rem', sm: '2.2rem', md: '2.8rem' } }}
+            >
+              {item.title}
+            </Typography>
+            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'justify', fontSize: { xs: '0.8rem', md: '1.1rem' } }}>
+              {item.desc}
+            </Typography>
+            <Button
+              href={item.url}
+              variant="contained"
+              sx={{
+                width: { xs: '40%', sm: 150 },
+                p: { xs: 0.3, md: 1 },
+                borderRadius: { xs: 0.4, md: 0.8 },
+                backgroundColor: 'secondary.main',
+                color: 'white',
+                alignSelf: { xs: 'center', md: 'flex-start' },
+                fontWeight: 600,
+                fontSize: '1rem',
+                boxShadow: 2,
+                transition: 'background 0.2s, transform 0.2s',
+                mb: { xs: 1, md: 0 },
+                '&:hover': {
+                  backgroundColor: 'secondary.dark',
+                  transform: 'translateY(-2px) scale(1.04)',
+                },
+                display: 'flex',
+                alignItems: 'center',
+               
+              }}
+              startIcon={
+                <GitHubIcon />
+              }
+            >
+              Source Code
+            </Button>
+          </Box>
           </Grid>
         </Grid>
       </Box>
@@ -204,7 +180,6 @@ const Projects: React.FC = () => {
     <Box
       id="projects"
       sx={{
-        minHeight:"auto",
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -213,11 +188,11 @@ const Projects: React.FC = () => {
         width: '100%',
       }}
     >
-      <Box sx={{ width: '100%', maxWidth: '100%', mx: { lg: '16rem' }, textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+      <Box sx={{ mx: { lg: '16rem' }, textAlign: 'center', mb: { xs: 6, md: 8 } }}>
         <Typography variant="h4" color="text.secondary" fontWeight={700}>
           Projects
         </Typography>
-        <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 130, margin: '0px auto 0 auto' }} />
+        <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 130, mx: 'auto' }} />
       </Box>
       <Single item={item} index={current} />
       <Box sx={{ display: 'flex', gap: 3, mt:4 }}>
