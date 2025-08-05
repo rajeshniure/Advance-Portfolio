@@ -4,12 +4,33 @@
   box-sizing: border-box;
 }
 
+html {
+  /* Prevent flash of unstyled content */
+  color-scheme: dark;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 html, body {
   width: 100%;
   overflow-x: hidden;
 }
 
+body {
+  /* Ensure smooth theme transitions */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 #root {
   width: 100%;
   overflow-x: hidden;
+  /* Prevent layout shift during theme loading */
+  min-height: 100vh;
 }

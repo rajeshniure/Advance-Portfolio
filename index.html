@@ -2,10 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-   
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rajesh Niure - Portfolio</title>
+    <script>
+      // Prevent flash of wrong theme
+      (function() {
+        function getInitialTheme() {
+          const savedTheme = localStorage.getItem('theme-mode');
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            return savedTheme;
+          }
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+          }
+          return 'dark';
+        }
+        
+        const theme = getInitialTheme();
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        // Apply basic styling to prevent flash
+        if (theme === 'dark') {
+          document.documentElement.style.backgroundColor = '#0a0a0a';
+          document.documentElement.style.colorScheme = 'dark';
+        } else {
+          document.documentElement.style.backgroundColor = '#ffffff';
+          document.documentElement.style.colorScheme = 'light';
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
