@@ -9,7 +9,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 const Footer: React.FC = () => {
   return (
     
-    <Card component="footer" elevation={3} sx={{ backgroundColor: "background.default", color: "text.secondary", pt: 6, pb: 3, borderRadius: 0}}>
+    <Card component="footer" elevation={3} sx={{ backgroundColor: "background.default", color: "text.secondary", pt: 1, pb: 1, borderRadius: 0}}>
 
       <Box sx={{ textAlign: "center", mb: 2 }}>
         <Link

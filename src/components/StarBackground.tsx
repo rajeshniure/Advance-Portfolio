@@ -29,7 +29,6 @@ const StarBackground: React.FC = () => {
 
   useFrame((_, delta) => {
     if (!isActiveRef.current || !ref.current) return;
-    // Throttle rotation updates to every other frame for lower CPU usage
     frameRef.current = (frameRef.current + 1) % 2;
     if (frameRef.current !== 0) return;
     ref.current.rotation.x -= delta / 15;
@@ -65,13 +64,15 @@ const StarsCanvas: React.FC = () => (
       position: "fixed",
       inset: 0,
       pointerEvents: "none",
+      zIndex: 0,
     }}
   >
     <Canvas
       camera={{ position: [0, 0, 1] }}
       dpr={[1, 1.5]}
       shadows={false}
-      gl={{ antialias: false, powerPreference: 'low-power' }}
+      gl={{ antialias: false, powerPreference: 'low-power', alpha: true }}
+      style={{ pointerEvents: 'none' }}
     >
       <StarBackground />
     </Canvas>

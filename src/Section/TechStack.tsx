@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
+import { Box, Card, Grid, Typography } from "@mui/material";
 import { techStackIcons } from "../constants/logo";
 import TechIconCardExperience from "../components/models/tech_logos/TechIconCardExperience";
 import { useMemo } from 'react';
@@ -23,13 +23,15 @@ const TechStack: React.FC = () => {
             }
           }}
         >
-          <CardContent
+          <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              p: { xs: 0, sm: 0, md: 2, lg: 2.5 },
-              gap: { xs: 0, md: 2 },
+              p: { xs: 1.2, sm: 1.25, md: 2, lg: 2.5 },
+              pt: { xs: 1.5, sm: 1.6, md: 2, lg: 2.5 },
+              pb: { xs: 1.5, sm: 1.6, md: 2, lg: 2.5 },
+              gap: { xs: 1.5, md: 0 },
               transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               position: "relative",
               "&:hover": {
@@ -39,17 +41,31 @@ const TechStack: React.FC = () => {
             }}
           >
             <Box sx={{ 
-              height: { xs: 80, sm: 90, md: 120, lg: 140 }, 
+              height: { md: 120, lg: 140 }, 
               mb: { xs: 0, md: 1 },
               width: "100%",
-              position: "relative"
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
             }}>
               <TechIconCardExperience model={techStackIcon} />
             </Box>
-            <Typography variant="body1" align="center" fontWeight="bold" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem', md: '1rem' }, color: 'text.secondary' }}>
+            <Typography 
+              variant="body1" 
+              align="center" 
+              fontWeight="bold" 
+              sx={{ 
+                fontSize: { xs: '0.7rem', sm: '0.85rem', md: '1rem' }, 
+                color: 'text.secondary',
+                lineHeight: 1.2,
+                mt: { xs: 0.25, md: 0 },
+                minHeight: { sm: '2.4em', md: 'auto' }
+              }}
+            >
               {techStackIcon.name}
             </Typography>
-          </CardContent>
+          </Box>
         </Card>
       </Grid>
     )), []

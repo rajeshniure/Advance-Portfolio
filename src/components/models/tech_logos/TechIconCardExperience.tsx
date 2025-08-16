@@ -9,6 +9,7 @@ interface ModelProps {
   name: string;
   scale?: [number, number, number];
   rotation?: [number, number, number];
+  imagePath?: string;
 }
 
 interface TechIconCardExperienceProps {
@@ -66,37 +67,55 @@ class ModelErrorBoundary extends React.Component<
 }
 
 const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ model }) => {
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
   return (
     <Box sx={{ 
       width: "100%", 
-      height: { xs: "100px", lg: "150px" },
+      height: { xs: "100%", lg: "150px" },
       position: "relative"
     }}>
-      <ModelErrorBoundary modelName={model.name}>
-        <Canvas
-          style={{
-            width: "100%",
-            height: "100%"
-          }}
-        >
-          <ambientLight intensity={1} color={0xffffff} />
-          <directionalLight position={[5, 5, 5]} intensity={2.5} color={0xffffff} />
-          <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={3} color={0xffffff} />
-          <Environment preset="city" />
-
-          <Suspense fallback={null}>
-            <Model model={model} />
-          </Suspense>
-
-          <OrbitControls 
-            enableZoom={false} 
-            enablePan={false}
-            autoRotate={false}
-            enableDamping={true}
-            dampingFactor={0.05}
+      {isMobile && model.imagePath ? (
+        <Box sx={{aspectRatio: '1 / 1', mx: 'auto', borderRadius: '23%', overflow: 'hidden' }}>
+          <Box
+            component="img"
+            src={model.imagePath}
+            alt={model.name}
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+              borderRadius: 0
+            }}
           />
-        </Canvas>
-      </ModelErrorBoundary>
+        </Box>
+      ) : (
+        <ModelErrorBoundary modelName={model.name}>
+          <Canvas
+            style={{
+              width: "100%",
+              height: "100%"
+            }}
+          >
+            <ambientLight intensity={1} color={0xffffff} />
+            <directionalLight position={[5, 5, 5]} intensity={2.5} color={0xffffff} />
+            <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={3} color={0xffffff} />
+            <Environment preset="city" />
+
+            <Suspense fallback={null}>
+              <Model model={model} />
+            </Suspense>
+
+            <OrbitControls 
+              enableZoom={false} 
+              enablePan={false}
+              autoRotate={false}
+              enableDamping={true}
+              dampingFactor={0.05}
+            />
+          </Canvas>
+        </ModelErrorBoundary>
+      )}
     </Box>
   );
 });
