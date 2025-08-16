@@ -18,9 +18,9 @@ interface TechIconCardExperienceProps {
 const Model: React.FC<{ model: ModelProps; isMobile: boolean }> = ({ model, isMobile }) => {
   const scene = useGLTF(model.modelPath);
   const scale = useMemo(() => {
-    return isMobile && model.scale
-      ? model.scale.map((v) => v * 0.7) as [number, number, number]
-      : model.scale;
+    if (!model.scale) return model.scale;
+    const factor = isMobile ? 0.6 : 1.0;
+    return model.scale.map((v) => v * factor) as [number, number, number];
   }, [isMobile, model.scale]);
 
   const content = (
@@ -82,14 +82,14 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ mo
           dpr={isMobile ? [1, 1.25] : [1, 1.75]}
           shadows={false}
           gl={{ antialias: false, powerPreference: 'low-power' }}
-          frameloop={isMobile ? 'demand' : 'always'}
+          frameloop={'always'}
         >
           <ambientLight intensity={1} color={0xffffff} />
           <directionalLight position={[5, 5, 5]} intensity={2.5} color={0xffffff} />
           <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={3} color={0xffffff} />
           <Environment preset="city" />
 
-          <Suspense fallback={null}>
+          <Suspense fallback={<Box sx={{width: '100%', height: '100%'}} /> }>
             <Model model={model} isMobile={isMobile} />
           </Suspense>
 
