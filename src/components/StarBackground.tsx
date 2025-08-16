@@ -1,35 +1,53 @@
 import type React from "react";
-import { useRef, useState, Suspense } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload } from "@react-three/drei";
-import { Box } from "@mui/material";
+import { Points, PointMaterial } from "@react-three/drei";
+import { Box, useMediaQuery } from "@mui/material";
 import type * as THREE from "three";
 import { inSphere } from "maath/random/dist/maath-random.esm";
 
 
 const StarBackground: React.FC = () => {
   const ref = useRef<THREE.Points>(null);
-  const [sphere] = useState(() => inSphere(new Float32Array(2000), { radius: 1.2 }));
+  const isMobile = useMediaQuery('(max-width:600px)');
+
+  const positions = useMemo(() => {
+    const count = isMobile ? 1200 : 2000;
+    return inSphere(new Float32Array(count), { radius: 1.2 });
+  }, [isMobile]);
+
+  const isActiveRef = useRef<boolean>(true);
+  const frameRef = useRef<number>(0);
+
+  useEffect(() => {
+    const onVisibility = () => {
+      isActiveRef.current = document.visibilityState === 'visible';
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, []);
 
   useFrame((_, delta) => {
-    if (ref.current) {
-      ref.current.rotation.x -= delta / 15;
-      ref.current.rotation.y -= delta / 20;
-    }
+    if (!isActiveRef.current || !ref.current) return;
+    // Throttle rotation updates to every other frame for lower CPU usage
+    frameRef.current = (frameRef.current + 1) % 2;
+    if (frameRef.current !== 0) return;
+    ref.current.rotation.x -= delta / 15;
+    ref.current.rotation.y -= delta / 20;
   });
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
       <Points
         ref={ref}
-        positions={sphere}
+        positions={positions}
         stride={3}
         frustumCulled
       >
         <PointMaterial
           transparent
           color="white"
-          size={0.003}
+          size={isMobile ? 0.0025 : 0.003}
           sizeAttenuation
           depthWrite={false}
         />
@@ -49,11 +67,13 @@ const StarsCanvas: React.FC = () => (
       pointerEvents: "none",
     }}
   >
-    <Canvas camera={{ position: [0, 0, 1] }}>
-      <Suspense fallback={null}>
-        <StarBackground />
-        <Preload all />
-      </Suspense>
+    <Canvas
+      camera={{ position: [0, 0, 1] }}
+      dpr={[1, 1.5]}
+      shadows={false}
+      gl={{ antialias: false, powerPreference: 'low-power' }}
+    >
+      <StarBackground />
     </Canvas>
   </Box>
 );

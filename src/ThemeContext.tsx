@@ -23,7 +23,7 @@ function readInitialMode(): ColorMode {
     const saved = localStorage.getItem("theme-mode");
     if (saved === "light" || saved === "dark") return saved;
   } catch {}
-  return "dark";
+  return "light";
 }
 
 function applyModeToDocument(mode: ColorMode) {
