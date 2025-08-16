@@ -2,7 +2,7 @@ import React, { useMemo, memo, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 
-import { Box, useMediaQuery, useTheme, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 interface ModelProps {
   modelPath: string;
@@ -107,8 +107,6 @@ useGLTF.preload("/models/javascript.glb");
 useGLTF.preload("/models/django.glb");
 useGLTF.preload("/models/typescript.glb");
 useGLTF.preload("/models/git-svg-transformed.glb");
-useGLTF.preload("/models/html.glb");
-useGLTF.preload("/models/css.glb");
 useGLTF.preload("/models/mysql.glb");
 useGLTF.preload("/models/tailwind.glb");
 useGLTF.preload("/models/mui.glb");

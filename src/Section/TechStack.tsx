@@ -59,7 +59,7 @@ const TechStack: React.FC = () => {
     <Box id="skills" sx={{ display: "flex", justifyContent: "center", pt: { xs: 8, md: 16 } }}>
       <Box sx={{ mx: { xs: 2, sm: 4, md: 8, lg: '18rem' }, maxWidth: '1400px' }}>
         <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
-          <Typography variant="h4" color="text.secondary" fontWeight={700}>
+          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}} >
             My Tech Stack
           </Typography>
           <Box sx={{ height: 4, backgroundColor: "secondary.main", borderRadius: 4, maxWidth: 225, mx: "auto" }} />

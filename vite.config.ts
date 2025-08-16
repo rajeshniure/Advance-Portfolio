@@ -8,14 +8,16 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom'],
+          react: ['react', 'react-dom'],
           mui: ['@mui/material', '@mui/icons-material'],
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          three: ['three'],
+          r3f: ['@react-three/fiber'],
+          drei: ['@react-three/drei'],
           animation: ['framer-motion']
         }
       }
     },
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1200
   },
   optimizeDeps: {
     include: ['react', 'react-dom', '@mui/material', 'framer-motion']

@@ -1,5 +1,6 @@
 
-import { Box, Typography, Link, IconButton, Stack } from "@mui/material";
+import { Box, Typography, IconButton, Stack, Card } from "@mui/material";
+import { Link } from "react-scroll";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -7,10 +8,17 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Footer: React.FC = () => {
   return (
-    <Box component="footer" sx={{ bgcolor: "background.paper", color: "text.secondary", pt: 6, pb: 3 }}>
+    
+    <Card component="footer" elevation={3} sx={{ backgroundColor: "background.default", color: "text.secondary", pt: 6, pb: 3, borderRadius: 0}}>
 
       <Box sx={{ textAlign: "center", mb: 2 }}>
-        <Link href="#home" underline="none" color="inherit">
+        <Link
+          to="home"
+          smooth
+          duration={500}
+          offset={-80}
+          style={{ textDecoration: "none", color: "inherit", cursor: 'pointer' }}
+        >
           <Typography variant="h6" fontWeight="bold">Rajesh Niure</Typography>
         </Link>
       </Box>
@@ -18,16 +26,30 @@ const Footer: React.FC = () => {
 
       <Box sx={{ textAlign: "center", mb: 2 }}>
         <Stack direction="row" spacing={3} justifyContent="center" flexWrap="wrap">
-          {["home", "about", "skills", "projects", "contact"].map((section) => (
-            <Link
+          {["home", "about", "skills", "projects", "certifications", "contact"].map((section) => (
+            <Box
               key={section}
-              href={`#${section}`}
-              color="inherit"
-              underline="hover"
-              sx={{ textTransform: "capitalize", fontSize: "0.95rem" }}
+              sx={{
+                textDecoration: "none",
+                color: "inherit",
+                textTransform: "capitalize",
+                fontSize: "0.95rem",
+                cursor: "pointer",
+                "&:hover": {
+                  color: "primary.main",
+                },
+              }}
             >
-              {section}
-            </Link>
+              <Link
+                to={section}
+                smooth
+                duration={500}
+                offset={-80}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                {section}
+              </Link>
+            </Box>
           ))}
         </Stack>
       </Box>
@@ -38,6 +60,7 @@ const Footer: React.FC = () => {
           <IconButton
             component="a"
             href="https://www.instagram.com/raj_niure/"
+            target="_blank"
             rel="noopener noreferrer"
             sx={{ color: "#E1306C" }}
           >
@@ -46,6 +69,7 @@ const Footer: React.FC = () => {
           <IconButton
             component="a"
             href="https://www.linkedin.com/in/rajeshniure/"
+            target="_blank"
             rel="noopener noreferrer"
             sx={{ color: "#0077b5" }}
           >
@@ -54,6 +78,7 @@ const Footer: React.FC = () => {
           <IconButton
             component="a"
             href="https://github.com/rajeshniure"
+            target="_blank"
             rel="noopener noreferrer"
             sx={{ color: "text.secondary" }}
           >
@@ -66,14 +91,26 @@ const Footer: React.FC = () => {
       <Box sx={{ textAlign: "center", fontSize: "0.85rem", color: "gray" }}>
         <Typography variant="body2">
           © {new Date().getFullYear()}{" "}
-          <Link href="#home" underline="hover" color="inherit">
+          <Link
+            to="home"
+            smooth
+            duration={500}
+            offset={-80}
+            style={{ 
+              textDecoration: "none", 
+              color: "inherit", 
+              cursor: 'pointer'
+            }}
+          >
             Rajesh Niure
           </Link>{" "}
           - All rights reserved
         </Typography>
       </Box>
-    </Box>
+    </Card>
+   
   );
 };
+
 
 export default Footer;

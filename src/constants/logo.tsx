@@ -36,18 +36,18 @@ export const techStackIcons = [
     rotation: [0, -Math.PI / 4, 0] as [number, number, number],
   },
 
-  {
-    name: "HTML",
-    modelPath: "/models/html.glb",
-    scale: [1, 1, 1] as [number, number, number],
-    rotation: [Math.PI / 2, 0, 0 ] as [number, number, number],
-  },
-  {
-    name: "CSS",
-    modelPath: "/models/css.glb",
-    scale: [1, 1, 1] as [number, number, number],
-    rotation: [Math.PI / 2, 0, 0] as [number, number, number],
-  },
+  // {
+  //   name: "HTML",
+  //   modelPath: "/models/html.glb",
+  //   scale: [1, 1, 1] as [number, number, number],
+  //   rotation: [Math.PI / 2, 0, 0 ] as [number, number, number],
+  // },
+  // {
+  //   name: "CSS",
+  //   modelPath: "/models/css.glb",
+  //   scale: [1, 1, 1] as [number, number, number],
+  //   rotation: [Math.PI / 2, 0, 0] as [number, number, number],
+  // },
   {
     name: "My SQL",
     modelPath: "/models/mysql.glb",

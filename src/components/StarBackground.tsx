@@ -1,16 +1,15 @@
-import React, { useRef, useState, Suspense } from "react";
+import type React from "react";
+import { useRef, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import { Box } from "@mui/material";
-import * as THREE from "three";
-import * as random from "maath/random/dist/maath-random.esm";
+import type * as THREE from "three";
+import { inSphere } from "maath/random/dist/maath-random.esm";
 
 
 const StarBackground: React.FC = () => {
   const ref = useRef<THREE.Points>(null);
-  const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(2000), { radius: 1.2 })
-  );
+  const [sphere] = useState(() => inSphere(new Float32Array(2000), { radius: 1.2 }));
 
   useFrame((_, delta) => {
     if (ref.current) {

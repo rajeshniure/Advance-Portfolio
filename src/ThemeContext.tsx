@@ -1,67 +1,57 @@
-import React, { createContext, useMemo, useState, useContext, useCallback, useEffect } from "react";
+import type React from "react";
+import { createContext, useMemo, useState, useContext, useCallback, useEffect } from "react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { lightTheme, darkTheme } from "./Theme";
 
-interface ThemeContextType {
-  toggleColorMode: () => void;
-  mode: "light" | "dark";
-}
+type ColorMode = "light" | "dark";
 
-const ColorModeContext = createContext<ThemeContextType>({
-  toggleColorMode: () => {},
-  mode: "light",
-});
+type ThemeContextValue = {
+  mode: ColorMode;
+  toggleColorMode: () => void;
+};
+
+const ColorModeContext = createContext<ThemeContextValue>({ mode: "light", toggleColorMode: () => {} });
 
 export const useColorMode = () => useContext(ColorModeContext);
 
-// Function to get initial theme
-const getInitialTheme = (): "light" | "dark" => {
-  // Check if we're in browser environment
-  if (typeof window === 'undefined') return 'dark';
-  
-  // Check localStorage first
-  const savedTheme = localStorage.getItem('theme-mode');
-  if (savedTheme === 'light' || savedTheme === 'dark') {
-    return savedTheme;
+function readInitialMode(): ColorMode {
+  if (typeof document !== "undefined") {
+    const attr = document.documentElement.getAttribute("data-theme");
+    if (attr === "light" || attr === "dark") return attr;
   }
-  
-  // Check system preference
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
-  
-  return 'dark'; // Default to dark
-};
+  try {
+    const saved = localStorage.getItem("theme-mode");
+    if (saved === "light" || saved === "dark") return saved;
+  } catch {}
+  return "dark";
+}
+
+function applyModeToDocument(mode: ColorMode) {
+  if (typeof document === "undefined") return;
+  document.documentElement.setAttribute("data-theme", mode);
+  document.documentElement.style.backgroundColor = mode === "dark" ? "#0a0a0a" : "#EAF6EE";
+  document.documentElement.style.colorScheme = mode === "dark" ? "dark" : "light";
+}
 
 export const CustomThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [mode, setMode] = useState<"light" | "dark">(getInitialTheme);
+  const [mode, setMode] = useState<ColorMode>(() => readInitialMode());
+
+  useEffect(() => {
+    applyModeToDocument(mode);
+    try {
+      localStorage.setItem("theme-mode", mode);
+    } catch {}
+  }, [mode]);
 
   const toggleColorMode = useCallback(() => {
-    setMode((prevMode) => {
-      const newMode = prevMode === "light" ? "dark" : "light";
-      localStorage.setItem('theme-mode', newMode);
-      return newMode;
-    });
-  }, []);
-
-  // Listen for system theme changes
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = (e: MediaQueryListEvent) => {
-      // Only update if no manual preference is saved
-      if (!localStorage.getItem('theme-mode')) {
-        setMode(e.matches ? 'dark' : 'light');
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    setMode((prev) => (prev === "light" ? "dark" : "light"));
   }, []);
 
   const theme = useMemo(() => (mode === "dark" ? darkTheme : lightTheme), [mode]);
+  const contextValue = useMemo<ThemeContextValue>(() => ({ mode, toggleColorMode }), [mode, toggleColorMode]);
 
   return (
-    <ColorModeContext.Provider value={{ toggleColorMode, mode }}>
+    <ColorModeContext.Provider value={contextValue}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {children}

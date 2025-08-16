@@ -1,10 +1,4 @@
-import {
-  Box,
-  Typography,
-  Button,
-  Paper,
-  Grid,
-} from "@mui/material";
+import { Box, Typography, Button, Paper, Grid } from "@mui/material";
 import { motion, useSpring, useTransform } from "framer-motion";
 import type { MouseEventHandler } from "react";
 
@@ -157,15 +151,15 @@ export default function CertificateSection() {
       pt: {xs:8,md:10},
     }}>
       <Box  sx={{ textAlign: "center", mb: 8 }}>
-        <Typography variant="h4" color="text.secondary" fontWeight={700} gutterBottom>
+        <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
           Certificates
         </Typography>
         <Box
           sx={{
-            height: 8,
+            height: 4,
             backgroundColor: "secondary.main",
             borderRadius: 2,
-            width: 180,
+            width: 170,
             margin: "0 auto",
           }}
         />

@@ -5,6 +5,7 @@ import {
   Typography,
   Button,
   Grid,
+
 } from "@mui/material";
 
 interface ItemType {
@@ -69,11 +70,12 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
         display: 'flex',
         justifyContent: 'center',
         border: { xs: "2px solid", md: "none" },
-        borderColor: { xs: "primary.main" },
-        borderRadius: { xs: 2, md: 0 },
+        borderColor: { xs: "gray" },
+        borderRadius: { xs: 1, md: 0 },
         filter: "brightness(1.08)",
         overflow: 'hidden',
-        boxShadow: {xs:"0 8px 32px 0 rgba(110, 87, 224, 0.25), 0 1.5px 8px 0 rgba(0,0,0,0.10)", md: "none" }, 
+        // boxShadow: {xs:"0 8px 32px 0 rgba(110, 87, 224, 0.25), 0 1.5px 8px 0 rgba(0,0,0,0.10)", md: "none" }, 
+        
       }}
     >
       <Box
@@ -137,14 +139,14 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
               href={item.url}
               variant="contained"
               sx={{
-                width: { xs: '40%', sm: 150 },
-                p: { xs: 0.3, md: 1 },
+                width: {sm: 150 },
+                p: { xs:0.7, md: 1 },
                 borderRadius: { xs: 0.4, md: 0.8 },
                 backgroundColor: 'secondary.main',
                 color: 'white',
-                alignSelf: { xs: 'center', md: 'flex-start' },
+                alignSelf: { xs: 'flex-start', md: 'flex-start' },
                 fontWeight: 600,
-                fontSize: '1rem',
+                fontSize: {xs:'0.9rem',md:'1rem'},
                 boxShadow: 2,
                 transition: 'background 0.2s, transform 0.2s',
                 mb: { xs: 1, md: 0 },
@@ -189,10 +191,10 @@ const Projects: React.FC = () => {
       }}
     >
       <Box sx={{ mx: { lg: '16rem' }, textAlign: 'center', mb: { xs: 6, md: 8 } }}>
-        <Typography variant="h4" color="text.secondary" fontWeight={700}>
+        <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
           Projects
         </Typography>
-        <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 130, mx: 'auto' }} />
+        <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 160, mx: 'auto' }} />
       </Box>
       <Single item={item} index={current} />
       <Box sx={{ display: 'flex', gap: 3, mt:4 }}>

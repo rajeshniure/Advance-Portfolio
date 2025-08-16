@@ -134,10 +134,10 @@ const About: React.FC = () => {
     <Box id="about" sx={{ display: "flex", justifyContent: "center", pt: { xs: 6, md: 16 } }}>
       <Box sx={{ mx: { xs: 1, sm: 2, lg: '24rem' } }}>
         <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
-          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{ fontSize: { xs: '1.75rem', md: '2.125rem' } }}>
+          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{ fontSize: { xs: '1.75rem', md: '2rem' } }}>
             About Me
           </Typography>
-          <Box sx={{ height: 4, backgroundColor: "secondary.main", borderRadius: 4, maxWidth: 170, mx: "auto" }} />
+          <Box sx={{ height: 4, backgroundColor: "secondary.main", borderRadius: 4, maxWidth: 150, mx: "auto" }} />
         </Box>
 
 

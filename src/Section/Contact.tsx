@@ -10,24 +10,20 @@ import {
 } from "@mui/material";
 import { useState, useCallback } from "react";
 import type { FormEvent } from "react";
-import { useToast } from "../hooks/use-toast";
+ 
 
 const contact = '/assets/images/contact.webp';
 
 const Contact = () => {
-  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
-      toast({
-        message: "Message sent! Thank you for your message. I'll get back to you soon.",
-      });
       setIsSubmitting(false);
     }, 1500);
-  }, [toast]);
+  }, []);
 
   return (
     <Box id="contact" sx={{ 
@@ -44,10 +40,10 @@ const Contact = () => {
         mx: 'auto'
       }}>
         <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 8 } }}>
-          <Typography variant="h4" color="text.secondary" fontWeight={700}>
+          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
             Get In Touch
           </Typography>
-          <Box sx={{ height: 6, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 200, mx: 'auto' }} />
+          <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 190, mx: 'auto' }} />
         </Box>
         <Typography variant="body1" align="center" mb={5} maxWidth="sm" mx="auto" color="text.secondary">
           Have a project in mind or want to collaborate? Feel free to reach out.
