@@ -23,7 +23,7 @@ const About: React.FC = () => {
     { name: "Collaboration", emoji: "🤝" }
   ];
 
-  const description = "Hello, I'm Rajesh Niure, a dedicated Backend Developer and a passionate Computer Science student currently studying at Prime College. I have built a strong technical foundation in Python, Django, JavaScript, HTML, CSS, and MySQL, and I continuously strive to deepen my knowledge in full-stack web development. Throughout my academic and personal projects, I have gained valuable experience in developing scalable, efficient, and user-focused web applications. I have a particular interest in backend development, database design, and API integrations, and I enjoy crafting solutions that are both technically sound and aligned with user needs. With a keen eye for clean code architecture and best practices, I am always eager to learn new technologies, improve my problem-solving skills, and collaborate on impactful projects. I believe that technology, when applied thoughtfully, can create meaningful changes — and I am committed to being a part of that innovation. I'm currently seeking opportunities to further apply my skills, grow as a developer, and contribute to exciting and challenging projects.";
+  const description = "Hello, I’m Rajesh Niure, a passionate Web Developer and Computer Science student at Prime College. I have a strong focus on frontend development, specializing in React to build interactive, responsive, and user-friendly interfaces. Alongside this, I work with Django to develop secure backends and integrate APIs, making me capable of delivering complete full-stack solutions. My technical foundation also includes Python, JavaScript, and MySQL, which support my ability to create efficient and scalable applications.I love turning ideas into functional and visually appealing web experiences, while also ensuring that the underlying architecture is clean and reliable. With a continuous drive to learn new technologies and refine my problem-solving skills, I thrive in collaborative environments where creativity meets innovation.I believe in building applications that truly enhance user experiences, and I’m eager to contribute my skills to impactful and challenging projects while continuing to grow as a developer.";
 
   const cardStyles = {
     background: 'rgba(255, 255, 255, 0.05)',
@@ -181,7 +181,8 @@ const About: React.FC = () => {
                 backgroundImage: 'url(/assets/images/About.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
+                backgroundRepeat: 'no-repeat',
+            
               }}
             />
           </Card>

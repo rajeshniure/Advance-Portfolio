@@ -15,23 +15,23 @@ interface TechIconCardExperienceProps {
   model: ModelProps;
 }
 
-const Model: React.FC<{ model: ModelProps }> = ({ model }) => {
+const Model: React.FC<{ model: ModelProps; isMobile: boolean }> = ({ model, isMobile }) => {
   const scene = useGLTF(model.modelPath);
-  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
-
-
-
   const scale = useMemo(() => {
     return isMobile && model.scale
       ? model.scale.map((v) => v * 0.7) as [number, number, number]
       : model.scale;
   }, [isMobile, model.scale]);
 
-  return (
-    <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
-      <group scale={scale} rotation={model.rotation}>
-        <primitive object={scene.scene} />
-      </group>
+  const content = (
+    <group scale={scale} rotation={model.rotation}>
+      <primitive object={scene.scene} />
+    </group>
+  );
+
+  return isMobile ? content : (
+    <Float speed={5.0} rotationIntensity={0.4} floatIntensity={0.8}>
+      {content}
     </Float>
   );
 };
@@ -66,6 +66,7 @@ class ModelErrorBoundary extends React.Component<
 }
 
 const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ model }) => {
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
   return (
     <Box sx={{ 
       width: "100%", 
@@ -78,6 +79,10 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ mo
             width: "100%",
             height: "100%"
           }}
+          dpr={isMobile ? [1, 1.25] : [1, 1.75]}
+          shadows={false}
+          gl={{ antialias: false, powerPreference: 'low-power' }}
+          frameloop={isMobile ? 'demand' : 'always'}
         >
           <ambientLight intensity={1} color={0xffffff} />
           <directionalLight position={[5, 5, 5]} intensity={2.5} color={0xffffff} />
@@ -85,7 +90,7 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ mo
           <Environment preset="city" />
 
           <Suspense fallback={null}>
-            <Model model={model} />
+            <Model model={model} isMobile={isMobile} />
           </Suspense>
 
           <OrbitControls 
@@ -93,7 +98,7 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ mo
             enablePan={false}
             autoRotate={false}
             enableDamping={true}
-            dampingFactor={0.05}
+            dampingFactor={isMobile ? 0.03 : 0.05}
           />
         </Canvas>
       </ModelErrorBoundary>
@@ -101,15 +106,7 @@ const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = memo(({ mo
   );
 });
 
-useGLTF.preload("/models/react_logo-transformed.glb");
-useGLTF.preload("/models/python-transformed.glb");
-useGLTF.preload("/models/javascript.glb");
-useGLTF.preload("/models/django.glb");
-useGLTF.preload("/models/typescript.glb");
-useGLTF.preload("/models/git-svg-transformed.glb");
-useGLTF.preload("/models/mysql.glb");
-useGLTF.preload("/models/tailwind.glb");
-useGLTF.preload("/models/mui.glb");
+
 
 
 export default TechIconCardExperience;
