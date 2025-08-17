@@ -1,6 +1,7 @@
 import { Box, Typography, Button, Paper, Grid } from "@mui/material";
 import { motion, useSpring, useTransform } from "framer-motion";
 import type { MouseEventHandler } from "react";
+import { Link } from "react-scroll";
 
 interface ItemType {
   id: number;
@@ -151,9 +152,11 @@ export default function CertificateSection() {
       pt: {xs:8,md:10},
     }}>
       <Box  sx={{ textAlign: "center", mb: 8 }}>
-        <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
-          Certificates
-        </Typography>
+        <Link to="certifications" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
+            Certificates
+          </Typography>
+        </Link>
         <Box
           sx={{
             height: 4,

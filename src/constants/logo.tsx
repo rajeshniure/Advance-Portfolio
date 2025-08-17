@@ -59,7 +59,7 @@ export const techStackIcons = [
   {
     name: "MUI",
     modelPath: "/models/mui.glb",
-    imagePath: "/assets/Skills/mui.png",
+    imagePath: "/assets/Skills/mui.jpg",
     scale: [1.4, 1.4, 1.4 ] as [number, number, number],
     rotation: [Math.PI / 2, 0, 0] as [number, number, number],
   },

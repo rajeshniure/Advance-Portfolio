@@ -2,6 +2,7 @@ import { Box, Card, Grid, Typography } from "@mui/material";
 import { techStackIcons } from "../constants/logo";
 import TechIconCardExperience from "../components/models/tech_logos/TechIconCardExperience";
 import { useMemo } from 'react';
+import { Link } from "react-scroll";
 
 const TechStack: React.FC = () => {
   
@@ -75,9 +76,11 @@ const TechStack: React.FC = () => {
     <Box id="skills" sx={{ display: "flex", justifyContent: "center", pt: { xs: 8, md: 16 } }}>
       <Box sx={{ mx: { xs: 2, sm: 4, md: 8, lg: '18rem' }, maxWidth: '1400px' }}>
         <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
-          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}} >
-            My Tech Stack
-          </Typography>
+          <Link to="skills" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+            <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}} >
+              My Tech Stack
+            </Typography>
+          </Link>
           <Box sx={{ height: 4, backgroundColor: "secondary.main", borderRadius: 4, maxWidth: 225, mx: "auto" }} />
         </Box>
       <Grid container spacing={{ xs: 1, sm: 2, md: 4 }} mt={4}>

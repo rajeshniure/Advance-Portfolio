@@ -7,6 +7,7 @@ import {
   Grid,
 
 } from "@mui/material";
+import { Link } from "react-scroll";
 
 interface ItemType {
   id: number;
@@ -191,9 +192,11 @@ const Projects: React.FC = () => {
       }}
     >
       <Box sx={{ mx: { lg: '16rem' }, textAlign: 'center', mb: { xs: 6, md: 8 } }}>
-        <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
-          Projects
-        </Typography>
+        <Link to="projects" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
+            Projects
+          </Typography>
+        </Link>
         <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 160, mx: 'auto' }} />
       </Box>
       <Single item={item} index={current} />
