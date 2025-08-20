@@ -151,7 +151,7 @@ export default function CertificateSection() {
       alignItems: "center",
       pt: {xs:8,md:10},
     }}>
-      <Box  sx={{ textAlign: "center", mb: 8 }}>
+      <Box  sx={{ textAlign: "center", mb: 8 }} className="top-header">
         <Link to="certifications" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
           <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
             Certificates
@@ -171,7 +171,7 @@ export default function CertificateSection() {
         width: {xs:"90%",md:"70%"},
       }}>
         {items.map((item) => (
-          <Grid size={{ xs: 6, md: 3 }} key={item.id}>
+          <Grid size={{ xs: 6, md: 3 }} key={item.id} className="certification-card">
             <CertificateCard item={item} />
           </Grid>
         ))}

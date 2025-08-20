@@ -11,19 +11,35 @@ import {
 import { useState, useCallback } from "react";
 import type { FormEvent } from "react";
 import { Link } from "react-scroll";
+import { sendContactEmail } from "../config/email";
  
 
 const contact = '/assets/images/contact.webp';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSuccessMsg(null);
+    setErrorMsg(null);
     setIsSubmitting(true);
-    setTimeout(() => {
+    const formData = new FormData(e.currentTarget);
+    const name = String(formData.get('name') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    try {
+      await sendContactEmail({ name, email, message });
+      setSuccessMsg('Message sent successfully. I will get back to you soon!');
+      (e.currentTarget as HTMLFormElement).reset();
+    } catch (err) {
+      setErrorMsg('Failed to send message. Please try again later.');
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   }, []);
 
   return (
@@ -40,7 +56,7 @@ const Contact = () => {
         maxWidth: { md: '1200px' },
         mx: 'auto'
       }}>
-        <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 8 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 8 } }} className="top-header">
           <Link to="contact" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
               Get In Touch
@@ -53,7 +69,7 @@ const Contact = () => {
           I'm always open to discussing new opportunities.
         </Typography>
         <Grid container spacing={{xs: 2, md: 4}} justifyContent="center" alignItems="center">
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }} className="form-control">
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -91,6 +107,16 @@ const Contact = () => {
               margin="normal"
               required
             />
+            {successMsg && (
+              <Typography variant="body2" color="success.main" sx={{ mt: 1 }}>
+                {successMsg}
+              </Typography>
+            )}
+            {errorMsg && (
+              <Typography variant="body2" color="error.main" sx={{ mt: 1 }}>
+                {errorMsg}
+              </Typography>
+            )}
             <Button
               type="submit"
               variant="contained"
@@ -105,7 +131,7 @@ const Contact = () => {
             </Button>
           </Box>
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'stretch' }}>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'stretch' }} className="contact-info">
             <Box sx={{ width: '100%', height: '100%' }}>
               <img
                 src={contact}

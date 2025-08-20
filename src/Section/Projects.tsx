@@ -91,7 +91,7 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
           alignItems="center"
           justifyContent="center"
         >
-          <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="project-box">
             <Box
               sx={{
                 maxWidth: 620,
@@ -115,7 +115,7 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
               />
             </Box>
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }} className="project-box">
             <Box
               sx={{
                 px: {xs:1,md:0},
@@ -191,7 +191,7 @@ const Projects: React.FC = () => {
         width: '100%',
       }}
     >
-      <Box sx={{ mx: { lg: '16rem' }, textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+      <Box sx={{ mx: { lg: '16rem' }, textAlign: 'center', mb: { xs: 6, md: 8 } }} className="top-header">
         <Link to="projects" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
           <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
             Projects

@@ -8,10 +8,12 @@ import Certificate from "./Section/Certificate"
 import Contact from "./Section/Contact"
 import AboutSection from "./Section/About"
 import Footer from "./Section/Footer"
+import { useScrollReveal } from "./hooks/useScrollReveal";
 
 
 function App() {
      const theme = useTheme();
+     useScrollReveal();
   return (
    <>
    {theme.palette.mode === "dark" && <StarBackground />}
@@ -24,7 +26,7 @@ function App() {
         <Contact />
         <Footer />
    </>
-)
+  )
 }
 
 export default App

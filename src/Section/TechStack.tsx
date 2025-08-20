@@ -8,7 +8,7 @@ const TechStack: React.FC = () => {
   
   const memoizedTechStackItems = useMemo(() => 
     techStackIcons.map((techStackIcon) => (
-      <Grid size={{ xs: 3, sm: 4, md: 3, lg: 2 }} key={techStackIcon.name}>
+      <Grid size={{ xs: 3, sm: 4, md: 3, lg: 2 }} key={techStackIcon.name} className="skills-item">
         <Card
           elevation={2}
           sx={{
@@ -75,7 +75,7 @@ const TechStack: React.FC = () => {
   return (
     <Box id="skills" sx={{ display: "flex", justifyContent: "center", pt: { xs: 8, md: 16 } }}>
       <Box sx={{ mx: { xs: 2, sm: 4, md: 8, lg: '18rem' }, maxWidth: '1400px' }}>
-        <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
+        <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }} className="top-header">
           <Link to="skills" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}} >
               My Tech Stack
@@ -83,7 +83,7 @@ const TechStack: React.FC = () => {
           </Link>
           <Box sx={{ height: 4, backgroundColor: "secondary.main", borderRadius: 4, maxWidth: 225, mx: "auto" }} />
         </Box>
-      <Grid container spacing={{ xs: 1, sm: 2, md: 4 }} mt={4}>
+      <Grid container spacing={{ xs: 1, sm: 2, md: 4 }} mt={4} className="skills-gallery">
         {memoizedTechStackItems}
       </Grid>
       </Box>

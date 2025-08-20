@@ -134,7 +134,7 @@ const About: React.FC = () => {
   return (
     <Box id="about" sx={{ display: "flex", justifyContent: "center", pt: { xs: 6, md: 16 } }}>
       <Box sx={{ mx: { xs: 1, sm: 2, lg: '24rem' } }}>
-        <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }}>
+        <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }} className="top-header">
           <Link to="about" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{ fontSize: { xs: '1.75rem', md: '2rem' } }}>
               About Me
@@ -144,7 +144,7 @@ const About: React.FC = () => {
         </Box>
 
 
-        <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+        <Box sx={{ display: { xs: 'block', md: 'none' } }} className="about-info">
           <DescriptionCard />
           <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2 }}>
             <SkillCard
@@ -174,6 +174,7 @@ const About: React.FC = () => {
             '& > *:nth-of-type(2)': { gridColumn: '2 / 4', gridRow: '1 / 5' },
             '& > *:nth-of-type(3)': { gridColumn: '1', gridRow: '3 / 5' },
           }}
+          className="about-info"
         >
 
           <Card elevation={2} sx={{ ...cardStyles, overflow: 'hidden' }}>

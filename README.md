@@ -67,3 +67,15 @@ export default tseslint.config([
   },
 ])
 ```
+
+## Environment Variables
+
+Create a `.env` at the project root with:
+
+```
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+Configure your EmailJS template to accept: `from_name`, `from_email`, `message`, and optionally `to_email`.
