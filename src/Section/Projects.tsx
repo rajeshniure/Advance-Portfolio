@@ -82,7 +82,7 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
       <Box
         sx={{
           width: '100%',
-          mx: { xs: 0, lg: '16rem' },
+          mx: { xs: 0, lg: '10.5rem', xl: '18rem' },
         }}
       >
         <Grid
@@ -94,9 +94,7 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
           <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="project-box">
             <Box
               sx={{
-                maxWidth: 620,
                 aspectRatio: '4/3',
-                mx: 'auto',
                 boxShadow: 2,
                 borderRadius: {xs:0,md:2},
                 overflow: 'hidden',
@@ -124,7 +122,7 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
                 gap: { xs: 1, md: 4 },
                 alignItems: { xs: 'center', md: 'flex-start' },
                 textAlign: { xs: 'center', md: 'left' },
-                width: {xs:'100%',md:'94%'},
+                width: {xs:'100%',md:'100%'},
               }}
             >
             <Typography
@@ -140,28 +138,32 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
               href={item.url}
               variant="contained"
               sx={{
-                width: {sm: 150 },
-                p: { xs:0.7, md: 1 },
-                borderRadius: { xs: 0.4, md: 0.8 },
+                alignSelf: 'flex-start' ,
+                my: { xs: 1, md: 1 },
+                px: { xs: 1.2, md: 2 },
+                py: { xs: 0.5, md: 1 },
+                minWidth: { xs: 'auto', sm: 170 },
                 backgroundColor: 'secondary.main',
                 color: 'white',
-                alignSelf: { xs: 'flex-start', md: 'flex-start' },
-                fontWeight: 600,
-                fontSize: {xs:'0.9rem',md:'1rem'},
-                boxShadow: 2,
-                transition: 'background 0.2s, transform 0.2s',
-                mb: { xs: 1, md: 0 },
+                fontWeight: {xs:500,md:700},
+                textTransform: 'none',
+                letterSpacing: 0.2,
+                fontSize: { xs: '0.95rem', md: '1rem' },
+                boxShadow: 3,
+                transition: 'all 0.2s ease',
                 '&:hover': {
-                  backgroundColor: 'secondary.dark',
-                  transform: 'translateY(-2px) scale(1.04)',
+                  transform: 'translateY(-2px)',
+                  boxShadow: 6,
+                },
+                '&:active': {
+                  transform: 'translateY(0)',
+                  boxShadow: 2,
                 },
                 display: 'flex',
                 alignItems: 'center',
-               
+                '& .MuiButton-startIcon': { mr: 1 },
               }}
-              startIcon={
-                <GitHubIcon />
-              }
+              startIcon={<GitHubIcon />}
             >
               Source Code
             </Button>

@@ -150,6 +150,7 @@ export default function CertificateSection() {
       justifyContent: "center",
       alignItems: "center",
       pt: {xs:8,md:10},
+      px:{xs:1,md:4,lg:6,xl:8},
     }}>
       <Box  sx={{ textAlign: "center", mb: 8 }} className="top-header">
         <Link to="certifications" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
@@ -167,8 +168,8 @@ export default function CertificateSection() {
           }}
         />
       </Box>
+      <Box sx={{ mx: { xs: 0, lg: '8rem', xl: '14rem' } }}>
       <Grid container spacing={4} sx={{
-        width: {xs:"90%",md:"70%"},
       }}>
         {items.map((item) => (
           <Grid size={{ xs: 6, md: 3 }} key={item.id} className="certification-card">
@@ -176,6 +177,7 @@ export default function CertificateSection() {
           </Grid>
         ))}
       </Grid>
+      </Box>
     </Box>
   );
 }
@@ -185,9 +187,10 @@ const CardContent: React.FC<{ item: ItemType }> = ({ item }) => {
     <>
       <Box
         sx={{
+
           position: "relative",
           width: "100%",
-          height: { xs: 100, md: 250 },
+          height: { xs: 100, md: 190, xl: 250 },
           overflow: "hidden",
         }}
       >
@@ -223,7 +226,7 @@ const CardContent: React.FC<{ item: ItemType }> = ({ item }) => {
             width:{xs:"55%",md:"45%"},
             textTransform: "none",
             fontWeight:500,
-            fontSize: {xs:10,md:16},
+            fontSize: {xs:10,md:12,xl:16},
             borderRadius: {xs:"4px",md:"6px"},
             backgroundColor: "primary.main",
             '&:hover': {

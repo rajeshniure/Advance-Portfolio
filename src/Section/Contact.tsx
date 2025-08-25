@@ -53,8 +53,7 @@ const Contact = () => {
     }}>
       <Box sx={{ 
         width: '100%',
-        maxWidth: { md: '1200px' },
-        mx: 'auto'
+        mx: { xs: 0, lg: '7rem', xl: '16rem' },
       }}>
         <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 8 } }} className="top-header">
           <Link to="contact" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>

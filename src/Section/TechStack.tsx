@@ -29,9 +29,9 @@ const TechStack: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              p: { xs: 1.2, sm: 1.25, md: 2, lg: 2.5 },
-              pt: { xs: 1.5, sm: 1.6, md: 2, lg: 2.5 },
-              pb: { xs: 1.5, sm: 1.6, md: 2, lg: 2.5 },
+              p: { xs: 1.2, sm: 1.25, md: 2, lg: 2},
+              pt: { xs: 1.5,lg:0, xl: 2 },
+              pb: { xs: 1.5,lg:1.2, xl: 2},
               gap: { xs: 1.5, md: 0 },
               transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               position: "relative",
@@ -61,7 +61,6 @@ const TechStack: React.FC = () => {
                 color: 'text.secondary',
                 lineHeight: 1.2,
                 mt: { xs: 0.25, md: 0 },
-                minHeight: { sm: '2.4em', md: 'auto' }
               }}
             >
               {techStackIcon.name}
@@ -74,7 +73,7 @@ const TechStack: React.FC = () => {
 
   return (
     <Box id="skills" sx={{ display: "flex", justifyContent: "center", pt: { xs: 8, md: 16 } }}>
-      <Box sx={{ mx: { xs: 2, sm: 4, md: 8, lg: '18rem' }, maxWidth: '1400px' }}>
+      <Box sx={{ mx: { xs: 2, sm: 4, md: 7, lg: '11rem', xl: '17rem' } }}>
         <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }} className="top-header">
           <Link to="skills" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}} >

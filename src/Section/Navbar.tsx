@@ -60,7 +60,7 @@ const NavBar: React.FC = () => {
   return (
 
 <AppBar position="fixed" elevation={0} sx={{ backgroundColor: "background.default", zIndex: 1000 }}>
-     <Toolbar sx={{ justifyContent: "space-between", mx: { xs: 0, lg: "16rem" } }}>
+     <Toolbar sx={{ justifyContent: "space-between", mx: { xs: 0, lg: "9rem", xl: "16rem" } }}>
   <Typography variant="h5" sx={{ fontWeight: 600, fontSize: "1.8rem", cursor: "pointer", color: "text.primary" }}>
     <Link to="home" smooth duration={500} style={{ textDecoration: "none",}}>
       Rajesh

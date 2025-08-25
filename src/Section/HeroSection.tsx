@@ -19,7 +19,7 @@ const HeroSection = () => {
 
   return (
     <Box id="home" sx={{ minHeight: { md: '100vh' }, display: 'flex', alignItems: 'center', justifyContent: 'center', pt: { xs: 10, md: 0 }, width: '100%', overflowX: 'hidden' }}>
-      <Grid container spacing={4} alignItems="center" justifyContent="center" width={{ xs: '90%', md: '70%' }} sx={{ mx: { xs: 0, lg: '16rem' } }} className="top-header">
+      <Grid container spacing={4} alignItems="center" justifyContent="center" width={{ xs: '90%', md: '100%' }} sx={{ mx: { xs: 0, lg: '11rem', xl: '18rem' } }} className="top-header">
         <Grid size={{ xs: 12, md: 6 }}
           sx={{
             order: { xs: 1, md: 2 },
@@ -66,22 +66,22 @@ const HeroSection = () => {
           }}
         >
           <Box className="featured-text-card">
-            <Typography className="featured-name" variant="h2" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '2.2rem', md: '3rem' } }}>
+            <Typography className="featured-name" variant="h2" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '2.2rem', md: '2.8rem', xl: '3rem' } }}>
               Hi, I'm Rajesh Niure
             </Typography>
-            <Button className="featured-text-btn" variant="contained" sx={{ color: 'white', mb: 2, fontWeight: 600, fontSize: { xs: '0.8rem', md: '1.2rem' }, backgroundColor: 'secondary.main' }}>
+            <Button className="featured-text-btn" variant="contained" sx={{ color: 'white', mb: 2, fontWeight: 600, fontSize: { xs: '0.8rem', md: '1rem', xl: '1.2rem' }, backgroundColor: 'secondary.main' }}>
               Web Developer
             </Button>
-            <Typography className="featured-text-info" variant="body1" textAlign="justify" sx={{ color: 'text.secondary', mb: 3, maxWidth: 500, fontSize: { xs: '0.9rem', md: '1.3rem' } }}>
+            <Typography className="featured-text-info" variant="body1" textAlign="justify" sx={{ color: 'text.secondary', mb: 3, maxWidth: 500, fontSize: { xs: '0.9rem', md: '1.15rem', xl: '1.3rem' } }}>
               Passionate Web developer with experience in building scalable web applications. Skilled in React, JavaScript, Django, Python, and database management, with a strong focus on performance, security, and clean code architecture.
             </Typography>
             <Stack direction="row" spacing={2} mb={2} className="featured-text-btn">
               <Link to="contact" smooth duration={500} style={{ textDecoration: "none", color: "inherit" }}>
-              <Button variant="contained" sx={{ color: 'white', fontWeight: 600, backgroundColor: 'secondary.main', fontSize: { xs: '0.8rem', md: '1.2rem' } }}>
+              <Button variant="contained" sx={{ color: 'white', fontWeight: 600, backgroundColor: 'secondary.main', fontSize: { xs: '0.8rem', md: '1rem', xl: '1.2rem' } }}>
                 Hire Me
               </Button>
               </Link>
-              <Button variant="outlined" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: { xs: '0.8rem', md: '1.2rem' } }} onClick={handleDownload}>
+              <Button variant="outlined" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: { xs: '0.8rem', md: '1rem', xl: '1.2rem' } }} onClick={handleDownload}>
                 Download Resume
               </Button>
             </Stack>
