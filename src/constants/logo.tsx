@@ -63,5 +63,12 @@ export const techStackIcons = [
     scale: [1.4, 1.4, 1.4 ] as [number, number, number],
     rotation: [Math.PI / 2, 0, 0] as [number, number, number],
   },
+  {
+    name: "Bootstrap",
+    modelPath: "/models/bootstrap.glb",
+    imagePath: "/assets/Skills/bootstrap.webp",
+    scale: [1.5, 1.5, 1.5 ] as [number, number, number],
+    rotation: [Math.PI / 2, 0, 0] as [number, number, number],
+  },
 
 ];

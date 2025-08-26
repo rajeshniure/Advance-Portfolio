@@ -5,40 +5,41 @@ import {
   Grid,
   TextField,
   Typography,
-  CircularProgress,
   Container,
 } from "@mui/material";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import type { FormEvent } from "react";
 import { Link } from "react-scroll";
-import { sendContactEmail } from "../config/email";
- 
+import emailjs from "emailjs-com"; 
 
 const contact = '/assets/images/contact.webp';
 
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSuccessMsg(null);
     setErrorMsg(null);
-    setIsSubmitting(true);
-    const formData = new FormData(e.currentTarget);
-    const name = String(formData.get('name') || '').trim();
-    const email = String(formData.get('email') || '').trim();
-    const message = String(formData.get('message') || '').trim();
+
+    if (!formRef.current) return;
 
     try {
-      await sendContactEmail({ name, email, message });
-      setSuccessMsg('Message sent successfully. I will get back to you soon!');
-      (e.currentTarget as HTMLFormElement).reset();
-    } catch (err) {
-      setErrorMsg('Failed to send message. Please try again later.');
-    } finally {
-      setIsSubmitting(false);
+      await emailjs.sendForm(
+        "service_rg0rlfi",   
+        "template_ybgb37v", 
+        formRef.current,
+        "I2HHD3zuwt-LEXcnJ"
+      );
+
+      setSuccessMsg("✅ Message sent successfully! I'll get back to you soon.");
+      formRef.current.reset();
+    } catch (error) {
+      console.error(error);
+      setErrorMsg("❌ Failed to send message. Please try again later.");
     }
   }, []);
 
@@ -68,6 +69,7 @@ const Contact = () => {
           <Grid size={{ xs: 12, md: 6 }} className="form-control">
             <Box
               component="form"
+              ref={formRef}
               onSubmit={handleSubmit}
               sx={{
                 bgcolor: "background.paper",
@@ -117,13 +119,10 @@ const Contact = () => {
               type="submit"
               variant="contained"
               color="primary"
-              startIcon={
-                isSubmitting ? <CircularProgress size={16} color="inherit" /> : <SendIcon fontSize="small" />
-              }
-              disabled={isSubmitting}
+              startIcon={<SendIcon fontSize="small" />}
               sx={{ mt: 2, fontWeight: 600, fontSize: { xs: '0.9rem', md: '1.1rem' }, borderRadius: 1 }}
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              Send Message
             </Button>
           </Box>
           </Grid>

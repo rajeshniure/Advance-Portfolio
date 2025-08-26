@@ -1,5 +1,6 @@
 import { useState } from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LaunchIcon from '@mui/icons-material/Launch';
 import {
   Box,
   Typography,
@@ -15,6 +16,7 @@ interface ItemType {
   img: string;
   desc: string;
   url: string;
+  live?: string;
 }
 
 const items: ItemType[] = [
@@ -24,6 +26,7 @@ const items: ItemType[] = [
     img: "/assets/projects/Rockbazaar.png",
     desc: " RockBazaar is a modern e-commerce web application built for fans of rock and pop music. It offers a curated collection of band-inspired clothing and merchandise with intuitive filtering by artist, genre, and category. The platform features a clean UI, responsive design, and secure checkout. Developed using  Django , RockBazaar demonstrates my skills in full-stack development, dynamic content management, and user-centric design.",
     url: "https://github.com/rajeshniure/RockBazaar--Django",
+  
   },
   {
     id: 2,
@@ -45,6 +48,7 @@ const items: ItemType[] = [
     img: "/assets/projects/Foodcommerce.png",
     desc: "A basic e-commerce web app for ordering delicious food items like cakes, muffins, and more. Built using ReactJS and styled with Tailwind CSS, it includes essential features like Add to Cart, Cart Quantity Increment, and Order Confirmation.",
     url: "https://github.com/rajeshniure/FoodCommerce",
+    live: "https://food-commerce.vercel.app/",
   },
   {
     id: 5,
@@ -122,39 +126,76 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
             <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'justify', fontSize: { xs: '0.8rem', md: '0.9rem' } }}>
               {item.desc}
             </Typography>
-            <Button
-              href={item.url}
-              variant="contained"
-              sx={{
-                alignSelf: 'flex-start' ,
-                my: { xs: 1, md: 1 },
-                px: { xs: 1.2, md: 1.3 },
-                py: { xs: 0.5, md: 1 },
-                borderRadius: {xs:0.5,md:0.8},
-                backgroundColor: 'secondary.main',
-                color: 'white',
-                fontWeight: {xs:500,md:700},
-                textTransform: 'none',
-                letterSpacing: 0.2,
-                fontSize: { xs: '0.8rem', md: '0.8rem' },
-                boxShadow: 3,
-                transition: 'all 0.2s ease',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: 6,
-                },
-                '&:active': {
-                  transform: 'translateY(0)',
-                  boxShadow: 2,
-                },
-                display: 'flex',
-                alignItems: 'center',
-                '& .MuiButton-startIcon': { mr: 1 },
-              }}
-              startIcon={<GitHubIcon />}
-            >
-              Source Code
-            </Button>
+            <Box sx={{ display: 'flex', gap: 1.5, alignSelf: 'flex-start', my: { xs: 1, md: 1 } }}>
+              <Button
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                sx={{
+                  px: { xs: 1.2, md: 1.3 },
+                  py: { xs: 0.5, md: 1 },
+                  borderRadius: {xs:0.5,md:0.8},
+                  backgroundColor: 'secondary.main',
+                  color: 'white',
+                  fontWeight: {xs:500,md:700},
+                  textTransform: 'none',
+                  letterSpacing: 0.2,
+                  fontSize: { xs: '0.8rem', md: '0.8rem' },
+                  boxShadow: 3,
+                  transition: 'all 0.2s ease',
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    boxShadow: 6,
+                  },
+                  '&:active': {
+                    transform: 'translateY(0)',
+                    boxShadow: 2,
+                  },
+                  display: 'flex',
+                  alignItems: 'center',
+                  '& .MuiButton-startIcon': { mr: 1 },
+                }}
+                startIcon={<GitHubIcon />}
+              >
+                Source Code
+              </Button>
+              {item.live && (
+                <Button
+                  href={item.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="contained"
+                  sx={{
+                    px: { xs: 1.2, md: 1.3 },
+                    py: { xs: 0.5, md: 1 },
+                    borderRadius: {xs:0.5,md:0.8},
+                    backgroundColor: 'primary.main',
+                    color: 'white',
+                    fontWeight: {xs:500,md:700},
+                    textTransform: 'none',
+                    letterSpacing: 0.2,
+                    fontSize: { xs: '0.8rem', md: '0.8rem' },
+                    boxShadow: 3,
+                    transition: 'all 0.2s ease',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: 6,
+                    },
+                    '&:active': {
+                      transform: 'translateY(0)',
+                      boxShadow: 2,
+                    },
+                    display: 'flex',
+                    alignItems: 'center',
+                    '& .MuiButton-startIcon': { mr: 1 },
+                  }}
+                  startIcon={<LaunchIcon />}
+                >
+                  Live View
+                </Button>
+              )}
+            </Box>
           </Box>
           </Grid>
         </Grid>

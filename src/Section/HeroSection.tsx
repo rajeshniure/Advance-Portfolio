@@ -31,8 +31,8 @@ const HeroSection = () => {
           <Box
             className="featured-image"
             sx={{
-              width: { xs: 220, md: 320 },
-              height: { xs: 220, md: 320 },
+              width: { xs: 250, md: 320 },
+              height: { xs: 250, md: 320 },
               borderRadius: '50%',
               overflow: 'hidden',
               boxShadow: 6,
