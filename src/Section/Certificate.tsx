@@ -1,4 +1,4 @@
-import { Box, Typography, Button, Paper, Grid } from "@mui/material";
+import { Box, Typography, Button, Paper, Grid, Container } from "@mui/material";
 import { motion, useSpring, useTransform } from "framer-motion";
 import type { MouseEventHandler } from "react";
 import { Link } from "react-scroll";
@@ -150,34 +150,26 @@ export default function CertificateSection() {
       justifyContent: "center",
       alignItems: "center",
       pt: {xs:8,md:10},
-      px:{xs:1,md:4,lg:6,xl:8},
     }}>
-      <Box  sx={{ textAlign: "center", mb: 8 }} className="top-header">
-        <Link to="certifications" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
-          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+      <Box  sx={{ textAlign: "center", mb: {xs:2,md:4} }} className="top-header">
+        <Link to="certifications" smooth duration={500} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{display:"inline-block", fontSize:{xs:"1.6rem",md:"1.8rem"},fontFamily:"monospace",borderBottom:"4px solid",borderColor:"secondary.main",borderRadius:0.5 }}>
             Certificates
           </Typography>
         </Link>
-        <Box
-          sx={{
-            height: 4,
-            backgroundColor: "secondary.main",
-            borderRadius: 2,
-            width: 170,
-            margin: "0 auto",
-          }}
-        />
+        <Typography variant="body1" align="center" maxWidth="sm" mx="auto" color="text.secondary" mt={1} fontFamily="monospace" fontSize={{xs:"0.8rem",md:"1rem"}}>
+        A collection of certifications that reflect my continuous learning and professional growth
+        </Typography>
       </Box>
-      <Box sx={{ mx: { xs: 0,  } }}>
-      <Grid container spacing={4} sx={{
-      }}>
+      <Grid container spacing={4}>
         {items.map((item) => (
           <Grid size={{ xs: 6, md: 3 }} key={item.id} className="certification-card">
             <CertificateCard item={item} />
           </Grid>
         ))}
       </Grid>
-      </Box>
+      </Container>
     </Box>
   );
 }
@@ -206,13 +198,13 @@ const CardContent: React.FC<{ item: ItemType }> = ({ item }) => {
       </Box>
       <Box sx={{p:1, flexGrow: 1, display: "flex", flexDirection: "column",gap:1 }}>
         <Box>
-          <Typography variant="h6" sx={{ fontWeight: 600,fontSize:{xs:"1rem",md:"1.3rem"} }}>
+          <Typography variant="h6" sx={{ fontWeight: 600,fontSize:{xs:"1rem",md:"1.1rem"} }}>
             {item.Name}
           </Typography>
           <Typography
-            variant="body2"
+            variant="body1"
             color="text.secondary"
-            sx={{ fontFamily: "monospace" }}
+            sx={{ fontFamily: "monospace",fontSize:{xs:"0.8rem",md:"0.9rem"} }}
           >
             {item.Issuer}
           </Typography>

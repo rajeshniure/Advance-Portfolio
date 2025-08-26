@@ -5,7 +5,7 @@ import {
   Typography,
   Button,
   Grid,
-
+  Container,
 } from "@mui/material";
 import { Link } from "react-scroll";
 
@@ -67,40 +67,28 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
   return (
     <Box
       sx={{
-        width: {xs:'92%',md:'100%'},
+        width: { xs: '100%', md: '100%' },
         display: 'flex',
         justifyContent: 'center',
-        border: { xs: "2px solid", md: "none" },
-        borderColor: { xs: "gray" },
+        border: { xs: '1px solid', md: 'none' },
+        borderColor: { xs: 'text.secondary' },
         borderRadius: { xs: 1, md: 0 },
-        filter: "brightness(1.08)",
         overflow: 'hidden',
-        // boxShadow: {xs:"0 8px 32px 0 rgba(110, 87, 224, 0.25), 0 1.5px 8px 0 rgba(0,0,0,0.10)", md: "none" }, 
-        
       }}
     >
       <Box
         sx={{
           width: '100%',
-          mx: { xs: 0, lg: '10.5rem', xl: '18rem' },
         }}
       >
         <Grid
           container
-          spacing={{ xs: 1, md: 8 }}
+          spacing={{ xs: 2, md: 6 }}
           alignItems="center"
           justifyContent="center"
         >
           <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="project-box">
-            <Box
-              sx={{
-                aspectRatio: '4/3',
-                boxShadow: 2,
-                borderRadius: {xs:0,md:2},
-                overflow: 'hidden',
-                background: 'rgba(0,0,0,0.03)',
-              }}
-            >
+            <Box sx={{ aspectRatio: '4/3', boxShadow: 2, borderRadius: { xs: 1, md: 2 }, overflow: 'hidden', bgcolor: 'background.paper' }}>
               <img
                 src={item.img}
                 alt={item.title}
@@ -127,11 +115,11 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
             >
             <Typography
               variant="h3"
-              sx={{ fontWeight: 700, fontSize: { xs: '2rem', sm: '2.2rem', md: '2.8rem' } }}
+              sx={{ fontWeight: 700, fontSize: { xs: '2rem', sm: '2rem', md: '2.2rem' } }}
             >
               {item.title}
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'justify', fontSize: { xs: '0.8rem', md: '1.1rem' } }}>
+            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'justify', fontSize: { xs: '0.8rem', md: '0.9rem' } }}>
               {item.desc}
             </Typography>
             <Button
@@ -140,7 +128,7 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
               sx={{
                 alignSelf: 'flex-start' ,
                 my: { xs: 1, md: 1 },
-                px: { xs: 1.2, md: 2 },
+                px: { xs: 1.2, md: 1.3 },
                 py: { xs: 0.5, md: 1 },
                 borderRadius: {xs:0.5,md:0.8},
                 backgroundColor: 'secondary.main',
@@ -148,7 +136,7 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
                 fontWeight: {xs:500,md:700},
                 textTransform: 'none',
                 letterSpacing: 0.2,
-                fontSize: { xs: '0.95rem', md: '1rem' },
+                fontSize: { xs: '0.8rem', md: '0.8rem' },
                 boxShadow: 3,
                 transition: 'all 0.2s ease',
                 '&:hover': {
@@ -193,20 +181,26 @@ const Projects: React.FC = () => {
         width: '100%',
       }}
     >
-      <Box sx={{ mx: { lg: '16rem' }, textAlign: 'center', mb: { xs: 6, md: 8 } }} className="top-header">
-        <Link to="projects" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
-          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
+      <Container maxWidth="lg" sx={{ px: { xs: 1, sm: 3, md: 4 } }}>
+      <Box sx={{ textAlign: 'center', mb: { xs: 2, md: 4 } }} className="top-header">
+        <Link to="projects" smooth duration={500} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+          <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{display:"inline-block", fontSize:{xs:"1.6rem",md:"1.8rem"},fontFamily:"monospace",borderBottom:"4px solid",borderColor:"secondary.main",borderRadius:0.5 }}>
             Projects
           </Typography>
         </Link>
-        <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 160, mx: 'auto' }} />
+        <Typography variant="body1" align="center" maxWidth="sm" mx="auto" color="text.secondary" mt={1} fontFamily="monospace" fontSize={{xs:"0.8rem",md:"1rem"}}>
+        A glimpse into my projects that reflect my dedication to building impactful and meaningful solutions.
+        </Typography>
       </Box>
-      <Single item={item} index={current} />
+      <Box>
+        <Single item={item} index={current} />
+      </Box>
+      </Container>
       <Box sx={{ display: 'flex', gap: 3, mt:4 }}>
-        <Button variant="contained" sx={{ backgroundColor: 'primary.main' }} disabled={isFirst} onClick={() => setCurrent(current - 1)}>
+        <Button variant="contained" sx={{ backgroundColor: 'primary.main',borderRadius:0.7 }} disabled={isFirst} onClick={() => setCurrent(current - 1)}>
           Prev
         </Button>
-        <Button variant="contained" sx={{ backgroundColor: 'primary.main' }} disabled={isLast} onClick={() => setCurrent(current + 1)}>
+        <Button variant="contained" sx={{ backgroundColor: 'primary.main',borderRadius:0.7 }} disabled={isLast} onClick={() => setCurrent(current + 1)}>
           Next
         </Button>
       </Box>

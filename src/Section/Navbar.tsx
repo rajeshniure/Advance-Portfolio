@@ -12,6 +12,7 @@ import {
   List,
   ListItemText,
   Drawer,
+  Container,
 } from "@mui/material";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -60,8 +61,9 @@ const NavBar: React.FC = () => {
   return (
 
 <AppBar position="fixed" elevation={0} sx={{ backgroundColor: "background.default", zIndex: 1000 }}>
-     <Toolbar sx={{ justifyContent: "space-between", mx: { xs: 0, lg: "9rem", xl: "16rem" } }}>
-  <Typography variant="h5" sx={{ fontWeight: 600, fontSize: "1.8rem", cursor: "pointer", color: "text.primary" }}>
+     <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3,md: 0 } }}>
+     <Toolbar sx={{ justifyContent: "space-between" }}>
+  <Typography variant="h5" sx={{ fontWeight: 600, fontSize: "1.7rem", cursor: "pointer", color: "text.primary" }}>
     <Link to="home" smooth duration={500} style={{ textDecoration: "none",}}>
       Rajesh
     </Link>
@@ -145,10 +147,11 @@ const NavBar: React.FC = () => {
               textDecoration: "none",
               color: activeSection === item.to ? theme.palette.primary.main : theme.palette.text.secondary,
               fontWeight: 600,
+              fontFamily: "monospace",
               cursor: "pointer",
               gap: 2,
               margin: "0 1rem",
-              fontSize: "1rem",
+              fontSize: "0.9rem",
               position: "relative",
               borderBottom: activeSection === item.to ? "2px solid" : "none",
               borderColor: activeSection === item.to ? theme.palette.primary.main : "transparent",
@@ -175,7 +178,7 @@ const NavBar: React.FC = () => {
           size="small"
           startIcon={<DescriptionIcon />}
           onClick={handleDownload}
-          sx={{ fontSize: "0.9rem",fontWeight: 600, backgroundColor: "secondary.main" }}
+          sx={{ fontSize: "0.8rem",fontWeight: 600, backgroundColor: "secondary.main" }}
           >
           Get Resume
         </Button>
@@ -192,7 +195,8 @@ const NavBar: React.FC = () => {
       </Box>
     </>
   )}
-</Toolbar>
+    </Toolbar>
+    </Container>
 
     </AppBar>
 

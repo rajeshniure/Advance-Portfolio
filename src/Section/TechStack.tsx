@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Typography } from "@mui/material";
+import { Box, Card, Grid, Typography, Container } from "@mui/material";
 import { techStackIcons } from "../constants/logo";
 import TechIconCardExperience from "../components/models/tech_logos/TechIconCardExperience";
 import { useMemo } from 'react';
@@ -57,7 +57,8 @@ const TechStack: React.FC = () => {
               align="center" 
               fontWeight="bold" 
               sx={{ 
-                fontSize: { xs: '0.7rem', sm: '0.85rem', md: '1rem' }, 
+                fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.9rem' }, 
+                
                 color: 'text.secondary',
                 lineHeight: 1.2,
                 mt: { xs: 0.25, md: 0 },
@@ -72,20 +73,22 @@ const TechStack: React.FC = () => {
   );
 
   return (
-    <Box id="skills" sx={{ display: "flex", justifyContent: "center", pt: { xs: 8, md: 16 } }}>
-      <Box sx={{ mx: { xs: 2, sm: 4, md: 7, lg: '11rem', xl: '18rem' } }}>
-        <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }} className="top-header">
-          <Link to="skills" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
-            <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}} >
+    <Box id="skills" sx={{ display: "flex", justifyContent: "center", pt: { xs: 8, md: 10 } }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 1, sm: 3, md: 4 } }}>
+        <Box sx={{ textAlign: "center", mb: { xs: 2, md: 4 } }} className="top-header">
+          <Link to="skills" smooth duration={500} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+            <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{display:"inline-block", fontSize:{xs:"1.6rem",md:"1.8rem"},fontFamily:"monospace",borderBottom:"4px solid",borderColor:"secondary.main",borderRadius:0.5 }} >
               My Tech Stack
             </Typography>
           </Link>
-          <Box sx={{ height: 4, backgroundColor: "secondary.main", borderRadius: 4, maxWidth: 225, mx: "auto" }} />
+          <Typography variant="body1" align="center" maxWidth="sm" mx="auto" color="text.secondary" mt={1} fontFamily="monospace" fontSize={{xs:"0.8rem",md:"1rem"}}>
+          My preferred tech stack that reflects my skills and expertise in modern development.
+         </Typography>
         </Box>
       <Grid container spacing={{ xs: 1, sm: 2, md: 4 }} mt={4} className="skills-gallery">
         {memoizedTechStackItems}
       </Grid>
-      </Box>
+      </Container>
     </Box>
   );
 };

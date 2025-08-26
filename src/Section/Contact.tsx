@@ -5,8 +5,8 @@ import {
   Grid,
   TextField,
   Typography,
-
   CircularProgress,
+  Container,
 } from "@mui/material";
 import { useState, useCallback } from "react";
 import type { FormEvent } from "react";
@@ -49,20 +49,16 @@ const Contact = () => {
       alignItems: 'center', 
       pt: {xs:8,md:10},
       pb: {xs:0,md:10},
-      px: { xs: 2, md: 8 },
+      px: { xs: 1, sm: 3, md: 4 },
     }}>
-      <Box sx={{ 
-        width: '100%',
-        mx: { xs: 0, lg: '17rem' },
-      }}>
-        <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 8 } }} className="top-header">
-          <Link to="contact" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
-            <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{fontSize:{xs:"1.75rem",md:"2rem"}}}>
+      <Container maxWidth="lg" sx={{ px: { xs: 1, sm: 2, md: 10 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 2, md: 4 } }} className="top-header">
+          <Link to="contact" smooth duration={500} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+            <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{display:"inline-block", fontSize:{xs:"1.6rem",md:"1.8rem"},fontFamily:"monospace",borderBottom:"4px solid",borderColor:"secondary.main",borderRadius:0.5 }}>
               Get In Touch
             </Typography>
           </Link>
-          <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 190, mx: 'auto' }} />
-          <Typography variant="body1" align="center" maxWidth="sm" mx="auto" color="text.secondary" mt={2}>
+          <Typography variant="body1" align="center" maxWidth="sm" mx="auto" color="text.secondary" mt={1} fontFamily="monospace" fontSize={{xs:"0.8rem",md:"1rem"}}>
           Have a project in mind or want to collaborate? Feel free to reach out.
           I'm always open to discussing new opportunities.
         </Typography>
@@ -136,7 +132,6 @@ const Contact = () => {
               <img
                 src={contact}
                 alt="contact"
-                loading="lazy"
                 style={{
                   width: '100%',
                   height: 'auto',
@@ -148,7 +143,7 @@ const Contact = () => {
             </Box>
           </Grid>
         </Grid>
-      </Box>
+      </Container>
     </Box>
   );
 };
