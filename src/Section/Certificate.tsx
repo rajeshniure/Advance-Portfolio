@@ -168,7 +168,7 @@ export default function CertificateSection() {
           }}
         />
       </Box>
-      <Box sx={{ mx: { xs: 0, lg: '8rem', xl: '14rem' } }}>
+      <Box sx={{ mx: { xs: 0,  } }}>
       <Grid container spacing={4} sx={{
       }}>
         {items.map((item) => (
@@ -190,7 +190,7 @@ const CardContent: React.FC<{ item: ItemType }> = ({ item }) => {
 
           position: "relative",
           width: "100%",
-          height: { xs: 100, md: 190, xl: 250 },
+          height: { xs: 100, md: 190,lg: 175, },
           overflow: "hidden",
         }}
       >
@@ -226,7 +226,7 @@ const CardContent: React.FC<{ item: ItemType }> = ({ item }) => {
             width:{xs:"55%",md:"45%"},
             textTransform: "none",
             fontWeight:500,
-            fontSize: {xs:10,md:12,xl:16},
+            fontSize: {xs:10,md:12},
             borderRadius: {xs:"4px",md:"6px"},
             backgroundColor: "primary.main",
             '&:hover': {

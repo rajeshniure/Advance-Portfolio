@@ -49,11 +49,11 @@ const Contact = () => {
       alignItems: 'center', 
       pt: {xs:8,md:10},
       pb: {xs:0,md:10},
-      px: { xs: 2, md: 4, lg: 8 },
+      px: { xs: 2, md: 8 },
     }}>
       <Box sx={{ 
         width: '100%',
-        mx: { xs: 0, lg: '7rem', xl: '16rem' },
+        mx: { xs: 0, lg: '17rem' },
       }}>
         <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 8 } }} className="top-header">
           <Link to="contact" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
@@ -62,11 +62,12 @@ const Contact = () => {
             </Typography>
           </Link>
           <Box sx={{ height: 4, backgroundColor: 'secondary.main', borderRadius: 4, maxWidth: 190, mx: 'auto' }} />
-        </Box>
-        <Typography variant="body1" align="center" mb={5} maxWidth="sm" mx="auto" color="text.secondary">
+          <Typography variant="body1" align="center" maxWidth="sm" mx="auto" color="text.secondary" mt={2}>
           Have a project in mind or want to collaborate? Feel free to reach out.
           I'm always open to discussing new opportunities.
         </Typography>
+        </Box>
+
         <Grid container spacing={{xs: 2, md: 4}} justifyContent="center" alignItems="center">
           <Grid size={{ xs: 12, md: 6 }} className="form-control">
             <Box

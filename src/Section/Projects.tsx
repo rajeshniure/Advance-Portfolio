@@ -142,7 +142,7 @@ const Single: React.FC<{ item: ItemType; index: number }> = ({ item }) => {
                 my: { xs: 1, md: 1 },
                 px: { xs: 1.2, md: 2 },
                 py: { xs: 0.5, md: 1 },
-                minWidth: { xs: 'auto', sm: 170 },
+                borderRadius: {xs:0.5,md:0.8},
                 backgroundColor: 'secondary.main',
                 color: 'white',
                 fontWeight: {xs:500,md:700},

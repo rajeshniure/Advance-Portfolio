@@ -98,7 +98,7 @@ const About: React.FC = () => {
 
   const DescriptionCard = () => (
     <Card elevation={2} sx={{ ...cardStyles, mb:{xs:1,md:0} }}>
-      <CardContent sx={{ p: { xs: 1, sm: 2 }, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: {md:'600px'} }}>
+      <CardContent sx={{ p: { xs: 1, sm: 2 }, display: 'flex', flexDirection: 'column',justifyContent: 'space-between',}}>
        <Box>
         <Box sx={{ display: 'flex', alignItems: 'center', mb:{xs:0,md:1} }}>
           <PsychologyIcon sx={{ color: 'secondary.main', fontSize: { xs: 24, sm: 28 } }} />
@@ -133,7 +133,7 @@ const About: React.FC = () => {
 
   return (
     <Box id="about" sx={{ display: "flex", justifyContent: "center", pt: { xs: 6, md: 16 } }}>
-      <Box sx={{ mx: { xs: 1, sm: 2, lg: '13rem',xl: '27rem' } }}>
+      <Box sx={{ mx: { xs: 1, sm: 2, lg: '13rem',xl: '29rem' } }}>
         <Box sx={{ textAlign: "center", mb: { xs: 3, md: 4 } }} className="top-header">
           <Link to="about" smooth duration={500} offset={-80} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
             <Typography variant="h4" color="text.secondary" fontWeight={700} sx={{ fontSize: { xs: '1.75rem', md: '2rem' } }}>
@@ -198,7 +198,7 @@ const About: React.FC = () => {
             title="Soft Skills"
             subtitle="Interpersonal expertise"
             items={softSkills}
-            itemsSx={{ display:'flex', flexDirection:'column', alignItems:'flex-start', gap:3, }}
+            itemsSx={{ display:'flex', flexDirection:'column', alignItems:'flex-start', gap:1.5, }}
           />
         </Box>
       </Box>
