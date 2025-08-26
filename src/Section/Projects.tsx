@@ -56,6 +56,7 @@ const items: ItemType[] = [
     img: "/assets/projects/tipsplitter.png",
     desc: "A responsive tip calculator built with React,TypeScript, and Material UI. Enter the bill, select or input a custom tip percentage, and split the total evenly among people. Clean UI, mobile-friendly, and easy to use.",
     url: "https://github.com/rajeshniure/Tip-Splitter",
+    live: "https://tip-splitter-omega.vercel.app/",
   },
     {
     id: 6,
