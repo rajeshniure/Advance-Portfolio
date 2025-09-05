@@ -48,7 +48,6 @@ const items: ItemType[] = [
     img: "/assets/projects/Foodcommerce.png",
     desc: "A basic e-commerce web app for ordering delicious food items like cakes, muffins, and more. Built using ReactJS and styled with Tailwind CSS, it includes essential features like Add to Cart, Cart Quantity Increment, and Order Confirmation.",
     url: "https://github.com/rajeshniure/FoodCommerce",
-    live: "https://food-commerce.vercel.app/",
   },
   {
     id: 5,
@@ -56,7 +55,6 @@ const items: ItemType[] = [
     img: "/assets/projects/tipsplitter.png",
     desc: "A responsive tip calculator built with React,TypeScript, and Material UI. Enter the bill, select or input a custom tip percentage, and split the total evenly among people. Clean UI, mobile-friendly, and easy to use.",
     url: "https://github.com/rajeshniure/Tip-Splitter",
-    live: "https://tip-splitter-omega.vercel.app/",
   },
     {
     id: 6,
