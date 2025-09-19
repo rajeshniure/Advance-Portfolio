@@ -26,7 +26,6 @@ const items: ItemType[] = [
     img: "/assets/projects/Rockbazaar.png",
     desc: " RockBazaar is a modern e-commerce web application built for fans of rock and pop music. It offers a curated collection of band-inspired clothing and merchandise with intuitive filtering by artist, genre, and category. The platform features a clean UI, responsive design, and secure checkout. Developed using  Django , RockBazaar demonstrates my skills in full-stack development, dynamic content management, and user-centric design.",
     url: "https://github.com/rajeshniure/RockBazaar--Django",
-  
   },
   {
     id: 2,
