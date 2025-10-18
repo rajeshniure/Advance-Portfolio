@@ -41,6 +41,7 @@ const items: ItemType[] = [
     img: "/assets/projects/AdvanceDashboard.png",
     desc: "The Advanced Dashboard is a sleek, responsive admin interface designed to visualize data and manage content with ease. Built using React and Material UI, it features interactive cards, smooth animations, drag-and-drop functionality, and dynamic data rendering. This project highlights my ability to create visually appealing, highly functional UIs with a strong focus on user experience and component reusability.",
     url: "https://github.com/rajeshniure/Advance-Dashboard",
+    live:"https://advance-dashboard-lyart.vercel.app/",
   },
   {
     id: 4,
